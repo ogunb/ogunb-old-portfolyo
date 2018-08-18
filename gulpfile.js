@@ -7,9 +7,9 @@ var gulp = require('gulp'),
     babel = require('gulp-babel'),
     sourcemap = require('gulp-sourcemaps'),
     imgmin = require('gulp-imagemin'),
-    plumber = require('gulp-plumber');
-    wait = require('gulp-wait')
-
+    plumber = require('gulp-plumber'),
+    wait = require('gulp-wait'),
+    concat = require('gulp-concat')
 
 var paths = {
         styleSrc : 'src/styles/**/*.sass',
@@ -48,11 +48,11 @@ gulp.task('javascript', function(){
     return gulp.src(paths.jsSrc)
         .pipe(plumber())
         .pipe(sourcemap.init())
-
-        // .pipe(babel({
-        //     presets: ['env']
-        // }))
-        // .pipe(uglify())
+        .pipe(concat('app.js'))
+        .pipe(babel({
+            presets: ['env']
+        }))
+        .pipe(uglify())
         .pipe(sourcemap.write())
     
         .pipe(gulp.dest(paths.jsDest));
