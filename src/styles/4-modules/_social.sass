@@ -1,0 +1,17 @@
+.social-media
+    display: flex
+    list-style: none
+    padding: 0
+    li
+        padding: 1.5rem
+        a svg
+            width: 3.5rem
+            height: 3.5rem
+            .a
+                fill: var(--gray)
+                transition: all 300ms ease-in-out
+        &:hover
+            .a
+                fill: var(--cta)
+    li:first-child
+        padding-left: 0
