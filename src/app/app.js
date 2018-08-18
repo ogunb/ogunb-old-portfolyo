@@ -30,3 +30,6 @@ function loop(){
 }
 loop();
 
+//----------Card-IMG----------//
+
+const imageCard = document.querySelectorAll('.cardimg');
