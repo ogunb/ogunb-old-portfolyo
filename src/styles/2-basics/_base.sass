@@ -1,0 +1,47 @@
+html
+  box-sizing: border-box
+  font-size: 62.5%
+*,
+*:before,
+*:after
+  box-sizing: inherit
+
+
+body
+  font-family: 'Barlow', sans-serif
+  line-height: 1.6
+  font-size: 2rem
+  -webkit-font-smoothing: antialiased
+  -webkit-text-size-adjust: 100%
+  background: var(--light)
+  color: var(--medium)
+  letter-spacing: 0.026em
+  overflow-x: hidden
+  position: relative
+
+.main-wrapper
+  width: 100%
+  
+.wrapper
+  width: 100%
+  max-width: 1140px
+  margin: 0 auto
+  position: relative
+
+.logo 
+  svg
+    width: 4rem
+    height: 4rem
+    .a, .d
+      fill: none
+      stroke: var(--dark)
+      stroke-linecap: round
+      stroke-linejoin: round
+    .a
+      stroke-width: 15px
+    .b
+      clip-path: url(#a)
+    .c
+      fill: var(--cta)
+    .d
+      stroke-width: 7px

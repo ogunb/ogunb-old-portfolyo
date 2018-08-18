@@ -1,0 +1,23 @@
+a
+  color: #00FFA7
+  text-decoration: none
+  outline: 0
+
+  &:hover,
+  &:focus
+    color: #0088FF
+
+.indicator
+  position: absolute
+  color: var(--medium)
+  transform: rotate(90deg)
+  bottom: 0
+  right: 0
+  font-weight: 300
+  &::after
+    content: ''
+    display: inline-block
+    width: 4rem
+    height: .1rem
+    background: var(--medium)
+    transform: translateY(-.45rem) translateX(.9rem)

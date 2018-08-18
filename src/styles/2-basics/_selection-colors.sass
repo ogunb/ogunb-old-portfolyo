@@ -1,0 +1,21 @@
+::selection
+  background: var(--cta)
+
+::-moz-selection
+  background: var(--cta)
+
+img::selection
+  background: transparent
+
+img::-moz-selection
+  background: transparent
+
+body
+  -webkit-tap-highlight-color: var(--dark)
+
+svg text
+  cursor: default
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
