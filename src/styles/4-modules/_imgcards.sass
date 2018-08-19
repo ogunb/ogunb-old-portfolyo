@@ -14,7 +14,7 @@
         background: url('../images/bookopus-thumb-bg.jpg')
     &__item
         position: absolute
-        transform: translateZ(20px) translateY(1rem)
+        transform: translateZ(20px) translateY(5rem)
         // box-shadow: 0 .3rem 2rem rgba(0,0,0,.20)
         width: 300px
         height: 184px
@@ -22,13 +22,16 @@
         top: calc(58% - (184px/2))
         left: calc(58% - (300px/2))
         opacity: 0
-        transition: all 300ms ease-in
+        transition: all 600ms cubic-bezier(.46,.02,.51,1.01)
+        transition-delay: 100ms
     &__back
         z-index: 1
         height: 204px
         top: 28%
         left: 18%
-        transform: translateZ(20px) translateY(1rem)
+        transform: translateZ(20px) translateY(5rem)
+        transition: all 600ms cubic-bezier(.46,.02,.51,1.01)
+        transition-delay: 0
     &--reveal
         transform: translateZ(20px) translateY(0)
         opacity: 1
