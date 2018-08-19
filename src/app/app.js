@@ -29,3 +29,16 @@ function loop(){
     requestAnimationFrame(loop);
 }
 loop();
+
+//----------CardIMG Reveal----------//
+
+let cardItem = Array.from(document.querySelectorAll('.cardimg__item'))
+
+window.addEventListener("scroll", () => {
+    console.log('deneme')
+    if(window.pageYOffset * 3 > canvas.height){
+        for(let i = 0; i < cardItem.length; i++){
+            cardItem[i].classList.add('cardimg--reveal')
+        }
+    }
+})
