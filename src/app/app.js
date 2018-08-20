@@ -35,6 +35,7 @@ loop();
 window.addEventListener("scroll", () => {
     let cardItem = Array.from(document.querySelectorAll('.cardimg__item'))
     let body = document.querySelector('body')
+    let contact = document.querySelector('.contact')
     if(window.pageYOffset * 3.1 > canvas.height){
         for(let i = 0; i < cardItem.length; i++){
             cardItem[i].classList.add('cardimg--reveal')
@@ -42,6 +43,11 @@ window.addEventListener("scroll", () => {
     }
     if(window.pageYOffset + 200 > canvas.height){
         body.style.backgroundColor = "var(--bookopus)"
+    } else{
+        body.style.backgroundColor = "var(--light)"
+    }
+    if(window.pageYOffset + contact.scrollHeight - 450  > canvas.height +  contact.scrollHeight ){
+        body.style.backgroundColor = "var(--light)"
     }
 })
 
