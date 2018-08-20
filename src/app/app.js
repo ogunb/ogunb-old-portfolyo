@@ -13,7 +13,7 @@ function noise(ctx){
     const buffer32 = new Uint32Array(ndata.data.buffer);
 
     for (let i = 0; i < buffer32.length; i++) {
-        buffer32[i] = ((255 * Math.random()) |0) << 24;
+        buffer32[i] = ((30 * Math.random()) |0) << 24;
     }
     ctx.putImageData(ndata, 0, 0);
 }
@@ -30,16 +30,19 @@ function loop(){
 }
 loop();
 
-//----------CardIMG Reveal----------//
+//----------CardIMG Reveal & bg-changer----------//
 
 window.addEventListener("scroll", () => {
     let cardItem = Array.from(document.querySelectorAll('.cardimg__item'))
+    let body = document.querySelector('body')
     if(window.pageYOffset * 3.1 > canvas.height){
         for(let i = 0; i < cardItem.length; i++){
             cardItem[i].classList.add('cardimg--reveal')
         }
     }
+    if(window.pageYOffset + 200 > canvas.height){
+        body.style.backgroundColor = "var(--bookopus)"
+    }
 })
 
-//----------Works BG Color Change----------//
 

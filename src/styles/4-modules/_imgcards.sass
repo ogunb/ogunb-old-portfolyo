@@ -3,18 +3,18 @@
     height: 492px
     box-shadow: 0 1rem 2rem rgba(0,0,0,.20)
     border-radius: .3rem
-    cursor: none
+    cursor: alias
     margin: 0
-    transform-style: preserve-3d
     position: relative
     &--hero
         width: 409px
         height: 409px
+        cursor: none
     &--bookopus
         background: url('../images/bookopus-thumb-bg.jpg')
     &__item
         position: absolute
-        transform: translateZ(20px) translateY(5rem)
+        transform: translateY(5rem)
         // box-shadow: 0 .3rem 2rem rgba(0,0,0,.20)
         width: 300px
         height: 184px
@@ -29,11 +29,11 @@
         height: 204px
         top: 28%
         left: 18%
-        transform: translateZ(20px) translateY(5rem)
+        transform: translateY(5rem)
         transition: all 600ms cubic-bezier(.46,.02,.51,1.01)
         transition-delay: 0
     &--reveal
-        transform: translateZ(20px) translateY(0)
+        transform: translateY(0)
         opacity: 1
 @media screen and (max-width: 1000px)
     .cardimg
