@@ -19,7 +19,7 @@ body
   overflow-x: hidden
   position: relative
   scroll-behavior: smooth
-  transition: background-color 500ms cubic-bezier(0.745, -0.010, 0.280, 1.150)
+  transition: background-color 500ms ease-in
 
 .main-wrapper
   width: 100%
@@ -47,6 +47,7 @@ body
       stroke: var(--dark)
       stroke-linecap: round
       stroke-linejoin: round
+      transition: all 500ms cubic-bezier(.46,.02,.51,1.01)
     .a
       stroke-width: 15px
     .b
