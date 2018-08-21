@@ -79,6 +79,7 @@ window.addEventListener("scroll", () => {
             cardItem[i].classList.add('cardimg--reveal')
         }
     }
+    
     function checkWorks(){
         if(window.pageYOffset + 50 > canvas.height){
             body.style.backgroundColor = "var(--bookopus)"
