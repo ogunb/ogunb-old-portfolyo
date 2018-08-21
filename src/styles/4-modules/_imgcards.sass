@@ -35,15 +35,15 @@
     &--reveal
         transform: translateY(0)
         opacity: 1
-@media screen and (max-width: 1000px)
-    .cardimg
-    width: 49.2rem
-    height: 49.2rem
-    &--hero
-        width: 40.9rem
-        height: 40.9rem
-    &__item
-        width: 30rem
-        height: 18.4rem
-    &__back
-        height: 20.4rem
+    @media screen and (max-width: 1000px)
+        width: 49.2rem
+        height: 49.2rem
+        &--hero
+            width: 40.9rem
+            height: 40.9rem
+        &__item
+            width: calc(30rem / 1.5)
+            height: calc(18.4rem / 1.5)
+        &__back
+            height: calc(20.4rem / 1.5)
+            left: -38%
