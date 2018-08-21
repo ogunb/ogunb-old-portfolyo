@@ -1,34 +1,69 @@
 //----------Noise-Background----------//
-const canvas = document.querySelector('.noise');
-const ctx = canvas.getContext('2d');
+let canvas = document.querySelector('.noise');
+let ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 window.addEventListener('resize', () => {canvas.width = window.innerWidth; canvas.height = window.innerHeight;});
 
-function noise(ctx){
-    let w = ctx.canvas.width;
-    let h = ctx.canvas.height;
-    const ndata = ctx.createImageData(w, h);
-    const buffer32 = new Uint32Array(ndata.data.buffer);
-
-    for (let i = 0; i < buffer32.length; i++) {
-        buffer32[i] = ((30 * Math.random()) |0) << 24;
+(function() {
+    var buffercanvas = document.createElement('canvas');
+    var bufferctx = buffercanvas.getContext('2d');
+    var WIDTH = 100;
+    var HEIGHT = 100;
+    buffercanvas.width = WIDTH;
+    buffercanvas.height = HEIGHT;
+    buffercanvas.fillStyle = '#000';
+  
+    function rand(num) {
+      return Math.floor(Math.random() * num);
     }
-    ctx.putImageData(ndata, 0, 0);
-}
+  
+    function tvstatic(canvas, ctx, scale) {
+      scale = scale || 1;
+      var h = canvas.height;
+      var w = canvas.width;
+  
+      bufferctx.clearRect(0, 0, WIDTH, HEIGHT);
+      // draw the static on the buffer canvas
+      for (var x = 0; x < WIDTH; x+=scale) {
+        for (var y = 0; y < HEIGHT; y+=scale) {
+          if (Math.round(Math.random()))
+            bufferctx.fillRect(x, y, scale, scale);
+        }
+      }
+  
+      // repeat it onto the real canvas
+      for (var x = 0; x < canvas.width; x += WIDTH) {
+        for (var y = 0; y < canvas.height; y += HEIGHT) {
+          ctx.drawImage(buffercanvas, x, y);
+        }
+      }
+  
+      // draw some horizontal lines on the real canvas
+      for (var y = rand(10); y < canvas.height; y += rand(10)) {
+        ctx.fillRect(0, y, canvas.width, rand(3));
+      }
+  
+    }
+  
+    window.tvstatic = tvstatic;
+  })();
+  window.addEventListener('load', load, false);
+		function load() {
+			canvas = document.querySelector('.noise');
+			ctx = canvas.getContext('2d');
+			ctx.fillStyle = '#f7f7f';
 
-function loop(){
-    let toggle = true;
-    toggle = !toggle;
-    if (toggle){
-        requestAnimationFrame(loop);
-        return;
-    } 
-    noise(ctx);
-    requestAnimationFrame(loop);
-}
-loop();
+			requestAnimationFrame(render);
+		}
+
+		function render() {
+			requestAnimationFrame(render);
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+			tvstatic(canvas, ctx, 2);
+		}
 
 //----------Scroll Effects----------//
 
@@ -46,7 +81,7 @@ window.addEventListener("scroll", () => {
         }
     }
     function checkWorks(){
-        if(window.pageYOffset + 400 > canvas.height){
+        if(window.pageYOffset + 50 > canvas.height){
             body.style.backgroundColor = "var(--bookopus)"
             logoInner.style.fill = "var(--light)"
             logoOuter.style.stroke = "var(--dark)"
@@ -75,4 +110,14 @@ window.addEventListener("scroll", () => {
     }
 })
 
+// let app = document.querySelector('.hero--hl');
+// let skills = ['UX', 'UI', 'Front-End'];
 
+// function skillLoop(){
+//     for (let i = 0; i < skills.length; i++) {
+//         setTimeout( function timer(){
+//             console.log(skills[i])
+//         }, i*3000 );
+//     }
+// }
+// skillLoop()
