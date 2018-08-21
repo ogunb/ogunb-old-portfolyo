@@ -116,7 +116,10 @@ window.addEventListener("scroll", () => {
 })
 
 let menu = document.querySelector('.mobile-nav--menu')
-
+    
 menu.addEventListener('click', () => {
-  menu.classList.toggle('active');
-})
+    menu.classList.toggle('active');
+    if (menu.classList.contains('active') === true){
+        console.log('buraya logo rengi değişiricek, bodye overflow:hidden eklenecek')
+    }
+})    
