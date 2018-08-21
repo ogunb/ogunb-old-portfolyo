@@ -109,15 +109,3 @@ window.addEventListener("scroll", () => {
         checkWorks();
     }
 })
-
-// let app = document.querySelector('.hero--hl');
-// let skills = ['UX', 'UI', 'Front-End'];
-
-// function skillLoop(){
-//     for (let i = 0; i < skills.length; i++) {
-//         setTimeout( function timer(){
-//             console.log(skills[i])
-//         }, i*3000 );
-//     }
-// }
-// skillLoop()
