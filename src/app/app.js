@@ -118,8 +118,20 @@ window.addEventListener("scroll", () => {
 let menu = document.querySelector('.mobile-nav--menu')
     
 menu.addEventListener('click', () => {
+    let logo = document.querySelector('.mobile-nav .logo .c');
+    let body = document.querySelector('body');
+    let links = document.querySelector('.mobile-nav__links')
+    
     menu.classList.toggle('active');
     if (menu.classList.contains('active') === true){
-        console.log('buraya logo rengi değişiricek, bodye overflow:hidden eklenecek')
+        logo.style.fill = "var(--light)";
+        body.style.overflowY = "hidden";
+        links.style.opacity = "1"
+        links.style.transform = "scale(1)"
+    } else{
+        logo.style.fill = "var(--cta)"
+        body.style.overflowY = "visible";
+        links.style.opacity = "0"
+        links.style.transform = "scale(1, 0)"
     }
 })    

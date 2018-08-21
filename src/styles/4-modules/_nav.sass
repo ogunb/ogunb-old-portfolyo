@@ -26,15 +26,21 @@
     .mobile-nav
         display: flex
         justify-content: space-between
-        // position: fixed
+        position: fixed
+        top: 0
+        width: 100%
+        z-index:  120
+        background: var(--light)
+        box-shadow: 0 0 1rem rgba(0,0,0,.15)
         svg
-            margin-top: 1.8rem
+            margin-top: 1.4rem
             margin-left: 2rem
             z-index: 120
             position: relative
         &--menu
             margin-right: 2rem
             margin-top: 1rem
+            margin-left: auto
             span
                 display: block
                 width: 4rem
@@ -62,6 +68,7 @@
         &__links
             position: absolute
             opacity: 1
+            transform: scale(1, 0)
             list-style: none
             background: var(--cta)
             display: flex
@@ -74,6 +81,8 @@
             justify-content: center
             align-items: center
             overflow: hidden
+            transition: all 500ms cubic-bezier(0.69, 0.02, 0.29, 1.16)
+            transform-origin: top
             li 
                 padding: 0
                 margin: 0
