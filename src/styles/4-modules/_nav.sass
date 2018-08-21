@@ -17,3 +17,42 @@
         li:first-child
             text-align: center
             margin-bottom: 2rem
+.mobile-nav
+    display: none
+
+@media screen and (max-width: 1250px)
+    .nav
+        display: none
+    .mobile-nav
+        display: flex
+        justify-content: space-between
+        padding: 1rem 1rem 0 2rem
+        // position: fixed
+        svg
+            margin-top: .8rem
+        &--menu
+            span
+                display: block
+                width: 4rem
+                height: .3rem
+                margin: 1rem
+                background: #222222
+                border-radius: .4rem
+                transition: all 300ms cubic-bezier(.46,.02,.51,1.01), opacity 100ms ease-in
+            span:nth-child(2)
+                width: 2rem
+            span:nth-child(3)
+                width: 3rem
+            &.active
+                span:last-child
+                width: 0
+                opacity: 0
+                span:nth-child(2)
+                width: 2rem
+                transform: translateY(-.7rem) rotate(-45deg)
+                span:first-child
+                width: 2rem
+                transform: translateY(.7rem) rotate(45deg)
+        ul
+            position: absolute
+            opacity: 0

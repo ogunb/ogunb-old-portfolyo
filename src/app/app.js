@@ -66,7 +66,6 @@ window.addEventListener('resize', () => {canvas.width = window.innerWidth; canva
 // 		}
 
 //----------Scroll Effects----------//
-
 window.addEventListener("scroll", () => {
     let cardItem = Array.from(document.querySelectorAll('.cardimg__item'))
     let body = document.querySelector('body')
@@ -83,29 +82,41 @@ window.addEventListener("scroll", () => {
     function checkWorks(){
         if(window.pageYOffset + 50 > canvas.height){
             body.style.backgroundColor = "var(--bookopus)"
-            logoInner.style.fill = "var(--light)"
-            logoOuter.style.stroke = "var(--dark)"
-            for(let i = 0; i < links.length; i++){
-                links[i].style.color = "var(--dark)"
+            if (canvas.width > 900){
+                logoInner.style.fill = "var(--light)"
+                logoOuter.style.stroke = "var(--dark)"
+                for(let i = 0; i < links.length; i++){
+                    links[i].style.color = "var(--dark)"
+                }
             }
         }    else{ /* Default Values */
             body.style.backgroundColor = "var(--light)"
-            logoInner.style.fill = "var(--cta)"
-            logoOuter.style.stroke = "var(--dark)"
-            for(let i = 0; i < links.length; i++){
-                links[i].style.color = "var(--dark)"
+            if (canvas.width > 900){
+                logoInner.style.fill = "var(--cta)"
+                logoOuter.style.stroke = "var(--dark)"
+                for(let i = 0; i < links.length; i++){
+                    links[i].style.color = "var(--dark)"
+                }
             }
         }
     }
     checkWorks();
     if(window.pageYOffset + contact.scrollHeight - 450  > canvas.height +  contact.scrollHeight ){
         body.style.backgroundColor = "var(--dark)"
-        logoInner.style.fill = "var(--cta)"
-        logoOuter.style.stroke = "var(--light)"
-        for(let i = 0; i < links.length; i++){
-            links[i].style.color = "var(--light)"
+        if (canvas.width > 900){
+            logoInner.style.fill = "var(--cta)"
+            logoOuter.style.stroke = "var(--light)"
+            for(let i = 0; i < links.length; i++){
+                links[i].style.color = "var(--light)"
+            }
         }
     }else if (window.pageYOffset + 200 > canvas.height || window.pageYOffset + contact.scrollHeight - 900  < canvas.height +  contact.scrollHeight){
         checkWorks();
     }
+})
+
+let menu = document.querySelector('.mobile-nav--menu')
+
+menu.addEventListener('click', () => {
+  menu.classList.toggle('active');
 })
