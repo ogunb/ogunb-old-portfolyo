@@ -1,0 +1,36 @@
+.about
+    position: absolute
+    background: var(--cta)
+    right: 0
+    top: 0
+    z-index: 10
+    width: 60vw
+    height: 100vh
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    &__close
+        position: absolute
+        left: 5vw
+        top: 5vh
+        color: var(--light)
+        &::before
+            background: var(--medium)
+    &__content
+        width: 60%
+    &__paragraphs
+        color: var(--dark)
+        overflow-y: scroll
+        height: 50vh
+        padding-right: 4rem
+        &::-webkit-scrollbar
+            width: .3rem
+            background: var(--light)
+        &::-webkit-scrollbar-thumb
+            background-color: var(--dark)
+            outline: 1px solid slategrey
+    .e-mail
+        color: var(--darker)
+        &::before
+            background: var(--light)
