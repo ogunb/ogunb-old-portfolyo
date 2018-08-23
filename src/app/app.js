@@ -137,14 +137,14 @@ menu.addEventListener('click', () => {
         links.style.opacity = "0"
         links.style.transform = "scale(1, 0)"
     }
-    links.addEventListener('click', () => {
-        menu.classList.remove('active')
-        closeTab()
+    links.addEventListener('click', () => { //burada hata null hatası veriyor.
+        menu.classList.remove('active');
+        closeTab();
     })
 })
 
-let aboutTriDesk = document.querySelector('#desktop--about')
-let aboutTriMob = document.querySelector('#desktop--mobile')
+let aboutTriDesk = document.querySelector('.desktop--about')
+let aboutTriMob = document.querySelector('.desktop--mobile')
     
 aboutTriDesk.addEventListener('click', openAbout); 
 aboutTriMob.addEventListener('click', () => {

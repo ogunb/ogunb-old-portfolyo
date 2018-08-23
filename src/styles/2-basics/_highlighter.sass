@@ -1,6 +1,14 @@
 .highlight
     position: relative
     cursor: crosshair
+    &--white
+        &::before
+            content: ''
+            background: var(--light)!important
+    &--dark
+        &::before
+            content: ''
+            background: var(--dark)!important
     &::before
         content: ''
         display: block

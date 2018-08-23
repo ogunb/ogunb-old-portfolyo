@@ -26,7 +26,7 @@ var paths = {
 
 gulp.task('default', ['serve']);
 
-gulp.task('image-minify', function(){
+gulp.task('imagemin', function(){
     return gulp.src(paths.imgSrc)
                 .pipe(imgmin())
                 .pipe(gulp.dest(paths.imgDest))

@@ -1,0 +1,27 @@
+.case
+    display: block
+    position: relative
+    &__close
+        position: fixed
+        top: 6vh
+        left: 2vw
+    &__landing
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        height: 100vh
+        margin-top: 10vh
+        position: relative
+        &-logo
+            width: 100%
+            height: auto
+        &-top
+            img:first-child
+                filter: drop-shadow(1rem 4.1rem 5rem rgba(0,0,0,.16)) 
+            img:last-child
+                filter: drop-shadow(2rem 1.5rem 2rem rgba(0,0,0,.16)) 
+                margin-left: -10vw
+                margin-bottom: -3vw
+
+            
