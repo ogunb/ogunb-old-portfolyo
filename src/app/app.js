@@ -120,9 +120,10 @@ let menu = document.querySelector('.mobile-nav--menu')
 menu.addEventListener('click', () => {
     let logo = document.querySelector('.mobile-nav .logo .c');
     let body = document.querySelector('body');
-    let links = document.querySelector('.mobile-nav__links')
+    let links = document.querySelector('.mobile-nav__links');
     
     menu.classList.toggle('active');
+
     if (menu.classList.contains('active') === true){
         logo.style.fill = "var(--light)";
         body.style.overflowY = "hidden";
@@ -137,14 +138,16 @@ menu.addEventListener('click', () => {
         links.style.opacity = "0"
         links.style.transform = "scale(1, 0)"
     }
-    links.addEventListener('click', () => { //burada hata null hatası veriyor.
-        menu.classList.remove('active');
-        closeTab();
+    links.addEventListener('click', () => {
+        if (menu.classList.contains('active')){
+            menu.classList.remove('active');
+            closeTab();
+        }
     })
 })
 
-let aboutTriDesk = document.querySelector('.desktop--about')
-let aboutTriMob = document.querySelector('.desktop--mobile')
+let aboutTriDesk = document.querySelector('.about--desktop')
+let aboutTriMob = document.querySelector('.about--mobile')
     
 aboutTriDesk.addEventListener('click', openAbout); 
 aboutTriMob.addEventListener('click', () => {

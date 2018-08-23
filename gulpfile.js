@@ -49,10 +49,10 @@ gulp.task('javascript', function(){
         .pipe(plumber())
         .pipe(sourcemap.init())
         .pipe(concat('app.js'))
-        .pipe(babel({
-            presets: ['env']
-        }))
-        .pipe(uglify())
+        // .pipe(babel({
+        //     presets: ['env']
+        // }))
+        // .pipe(uglify())
         .pipe(sourcemap.write())
     
         .pipe(gulp.dest(paths.jsDest));
