@@ -15,6 +15,7 @@
         position: relative
         &-logo
             width: 100%
+            max-width: 700px
             height: auto
             margin-bottom: -5vh
         &-top
@@ -35,6 +36,17 @@
         h2
             margin: 5rem 0 2rem 0
             color: var(--dark)
+        p
+            margin: 0
         .case__img
             margin: 5rem 0 5rem 0
             text-align: center
+        .case__mockup
+            margin-top: 15rem
+            margin-bottom: 15rem
+            img
+                display: flex
+                margin: auto
+                filter: drop-shadow(0 4.7rem 3.5rem rgba(0,0,0,.16))
+                .animate
+                    animation: slideUp 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1
