@@ -50,6 +50,28 @@
             img
                 display: flex
                 margin: auto
+                max-width: 80%
+                height: auto
                 filter: drop-shadow(0 4.7rem 3.5rem rgba(0,0,0,.16))
                 .animate
                     animation: slideUp 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1
+    &__bottom
+        position: relative
+        display: flex
+        justify-content: center
+        align-items: center
+        height: 75vh
+        margin-bottom: 5vh
+        img
+            max-width: 50%
+            height: auto
+        img:first-child
+            filter: drop-shadow(1rem 4.1rem 5rem rgba(0,0,0,.16)) 
+            animation: slideUp 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1
+            margin-right: -35vw
+            opacity: 0
+        img:last-child
+            filter: drop-shadow(2rem 1.5rem 2rem rgba(0,0,0,.16)) 
+            animation: slideUp 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1 300ms
+            margin-bottom: -20vh
+            opacity: 0
