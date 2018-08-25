@@ -9,7 +9,7 @@
     &__landing
         display: flex
         flex-direction: column
-        justify-content: center
+        justify-content: space-around
         align-items: center
         height: 100vh
         margin-top: 10vh
@@ -17,13 +17,18 @@
         &-logo
             width: 100%
             height: auto
+            margin-bottom: -5vh
         &-top
             img:first-child
                 filter: drop-shadow(1rem 4.1rem 5rem rgba(0,0,0,.16)) 
+                animation: slideUp 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1
+                opacity: 0
             img:last-child
                 filter: drop-shadow(2rem 1.5rem 2rem rgba(0,0,0,.16)) 
                 margin-left: -10vw
                 margin-bottom: -3vw
+                animation: slideUp 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1 300ms
+                opacity: 0
     &__content
         .wrapper
             display: block
