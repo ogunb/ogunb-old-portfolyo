@@ -5,3 +5,18 @@
     to
         transform: translateY(0)
         opacity: 1
+@keyframes userFlowDash
+    0%
+        opacity: 0
+        stroke-dashoffset: 2300
+    30%
+        opacity: 1
+        stroke-dashoffset: 2300
+    90%
+        fill: rgba(64, 64, 64, 0)
+        stroke: rgba(64, 64, 64, 1)
+    100%
+        opacity: 1
+        stroke-dashoffset: 0
+        fill: rgba(64, 64, 64, 1)
+        stroke: rgba(64, 64, 64, 0)
