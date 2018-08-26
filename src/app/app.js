@@ -3,43 +3,52 @@ if(document.querySelector('.hero')){
     let landingTop = document.querySelector('.hero').getBoundingClientRect()
     let landingTopWidth = landingTop.width
     let landingTopHeight = landingTop.height
+    let landingTopX = landingTop.top
+
+    let works = document.querySelector('.works').getBoundingClientRect()
+    let worksTop = works.top
+
+    let contact = document.querySelector('.contact').getBoundingClientRect()
+    let contactTop = contact.top
 
     window.addEventListener("scroll", () => {
         let cardItem = Array.from(document.querySelectorAll('.cardimg__item'))
         let body = document.querySelector('body')
-        let contact = document.querySelector('.contact')
         let logoInner = document.querySelector('.logo svg .c')
         let logoOuter = document.querySelector('.logo svg .d')
         let links = Array.from(document.querySelectorAll('.nav ul li a'))
 
-        if(window.pageYOffset + 400 > landingTopHeight){
+        let works = document.querySelector('.works').getBoundingClientRect()
+        let worksTop = works.top
+
+        let contact = document.querySelector('.contact').getBoundingClientRect()
+        let contactTop = contact.top
+
+        if(worksTop < 400){
             for(let i = 0; i < cardItem.length; i++){
                 cardItem[i].classList.add('cardimg--reveal')
             }
         }
-        function checkWorks(){
-            if(window.pageYOffset + 100 > landingTopHeight){
-                body.style.backgroundColor = "var(--bookopus)"
-                if (landingTopWidth > 900){
-                    logoInner.style.fill = "var(--light)"
-                    logoOuter.style.stroke = "var(--dark)"
-                    for(let i = 0; i < links.length; i++){
-                        links[i].style.color = "var(--dark)"
-                    }
+        if(worksTop < 300){
+            body.style.backgroundColor = "var(--bookopus)"
+            if (landingTopWidth > 900){
+                logoInner.style.fill = "var(--light)"
+                logoOuter.style.stroke = "var(--dark)"
+                for(let i = 0; i < links.length; i++){
+                    links[i].style.color = "var(--dark)"
                 }
-            }    else{ /* Default Values */
-                body.style.backgroundColor = "var(--light)"
-                if (landingTopWidth > 900){
-                    logoInner.style.fill = "var(--cta)"
-                    logoOuter.style.stroke = "var(--dark)"
-                    for(let i = 0; i < links.length; i++){
-                        links[i].style.color = "var(--dark)"
-                    }
+            }
+        }else{ /* Default Values */
+            body.style.backgroundColor = "var(--light)"
+            if (landingTopWidth > 900){
+                logoInner.style.fill = "var(--cta)"
+                logoOuter.style.stroke = "var(--dark)"
+                for(let i = 0; i < links.length; i++){
+                    links[i].style.color = "var(--dark)"
                 }
             }
         }
-        checkWorks();
-        if(window.pageYOffset + contact.scrollHeight - 450  > landingTopHeight +  contact.scrollHeight ){
+        if(contactTop < 200){
             body.style.backgroundColor = "var(--dark)"
             if (landingTopWidth > 900){
                 logoInner.style.fill = "var(--cta)"
@@ -48,8 +57,6 @@ if(document.querySelector('.hero')){
                     links[i].style.color = "var(--light)"
                 }
             }
-        }else if (window.pageYOffset + 200 > landingTopHeight || window.pageYOffset + contact.scrollHeight - 900  < landingTopHeight +  contact.scrollHeight){
-            checkWorks();
         }
     })
 }
