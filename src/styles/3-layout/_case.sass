@@ -5,6 +5,8 @@
         position: fixed
         top: 6vh
         left: 2vw
+        @media screen and (max-width: 800px)
+            display: none
     &__landing
         display: flex
         flex-direction: column
@@ -25,8 +27,8 @@
                 opacity: 0
             img:last-child
                 filter: drop-shadow(2rem 1.5rem 2rem rgba(0,0,0,.16)) 
-                margin-left: -10vw
-                margin-bottom: -3vw
+                margin-left: -15rem
+                margin-bottom: -5rem
                 animation: slideUp 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1 300ms
                 opacity: 0
     &__content
@@ -61,20 +63,20 @@
         display: flex
         justify-content: center
         align-items: center
-        height: 75vh
-        margin-bottom: 5vh
+        height: 50rem
+        margin-bottom: 5rem
         img
             max-width: 50%
             height: auto
         img:first-child
             filter: drop-shadow(1rem 4.1rem 5rem rgba(0,0,0,.16)) 
-            margin-right: -35vw
+            margin-right: -47.5rem
             opacity: 0
             &.animate
                 animation: slideUp 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1 300ms
         img:last-child
             filter: drop-shadow(2rem 1.5rem 2rem rgba(0,0,0,.16)) 
-            margin-bottom: -20vh
+            margin-bottom: -15rem
             opacity: 0
             &.animate
                 animation: slideUp 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1 
