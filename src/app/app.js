@@ -153,12 +153,12 @@ if (document.querySelector('.case__mockup')){
             console.log(mockupOffset)
             mockupImg.classList.add('animate')
         }
-        if (mockupOffset < -550){
+        if (mockupOffset < -430){
             for (let st0 in userFlow){
                 userFlow[st0].classList.add('animate')
             }
         }
-        if (bottomOffset < 100){
+        if (bottomOffset < 400){
             for (let img in bottomMockImg){
                 bottomMockImg[img].classList.add('animate')
             }
