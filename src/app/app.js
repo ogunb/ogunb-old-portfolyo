@@ -150,7 +150,6 @@ if (document.querySelector('.case__mockup')){
         const userFlow = Array.from(document.querySelectorAll('#userflow .st0'))
 
         if (mockupOffset < 450){
-            console.log(mockupOffset)
             mockupImg.classList.add('animate')
         }
         if (mockupOffset < -430){
