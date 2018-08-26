@@ -199,21 +199,35 @@ function bodyOverflow(){
 }
 
 if (document.querySelector('.case__mockup')){
+
     window.addEventListener('scroll', () => {
+
         const mockup = document.querySelector('.case__mockup');
         const mockupImg = document.querySelector('.case__mockup img');
         const bottomMock = document.querySelector('.case__bottom');
         const bottomMockImg = Array.from(document.querySelectorAll('.case__bottom img'));
+
         let mockupOffset = mockup.getBoundingClientRect().top
         let bottomOffset = bottomMock.getBoundingClientRect().top
 
+        const userFlow = Array.from(document.querySelectorAll('#userflow .st0'))
+
         if (window.pageYOffset >= mockupOffset + 450){
             mockupImg.classList.add('animate')
+        }
+        if (window.pageYOffset >= mockupOffset + 1900){
+            for (let st0 in userFlow){
+                userFlow[st0].classList.add('animate')
+            }
         }
         if (window.pageYOffset >= bottomOffset * 10){
             for (let img in bottomMockImg){
                 bottomMockImg[img].classList.add('animate')
             }
         }
+        if (window.pageYOffset >= mockupOffset + 450){
+            mockupImg.classList.add('animate')
+        }
+
     })
 }
