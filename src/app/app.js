@@ -68,59 +68,61 @@ if(document.querySelector('canvas')){
 }
 
 //----------Scroll Effects----------//
-let landingTop = document.querySelector('.hero').getBoundingClientRect()
-let landingTopWidth = landingTop.width
-let landingTopHeight = landingTop.height
-let landingBookopusOffset = document.querySelector('#works1').getBoundingClientRect().top
+if(document.querySelector('.hero')){
+    let landingTop = document.querySelector('.hero').getBoundingClientRect()
+    let landingTopWidth = landingTop.width
+    let landingTopHeight = landingTop.height
+    let landingBookopusOffset = document.querySelector('#works1').getBoundingClientRect().top
 
-window.addEventListener("scroll", () => {
-    let cardItem = Array.from(document.querySelectorAll('.cardimg__item'))
-    let body = document.querySelector('body')
-    let contact = document.querySelector('.contact')
-    let logoInner = document.querySelector('.logo svg .c')
-    let logoOuter = document.querySelector('.logo svg .d')
-    let links = Array.from(document.querySelectorAll('.nav ul li a'))
+    window.addEventListener("scroll", () => {
+        let cardItem = Array.from(document.querySelectorAll('.cardimg__item'))
+        let body = document.querySelector('body')
+        let contact = document.querySelector('.contact')
+        let logoInner = document.querySelector('.logo svg .c')
+        let logoOuter = document.querySelector('.logo svg .d')
+        let links = Array.from(document.querySelectorAll('.nav ul li a'))
 
-    if(window.pageYOffset + 400 > landingTopHeight){
-        for(let i = 0; i < cardItem.length; i++){
-            cardItem[i].classList.add('cardimg--reveal')
+        if(window.pageYOffset + 400 > landingTopHeight){
+            for(let i = 0; i < cardItem.length; i++){
+                cardItem[i].classList.add('cardimg--reveal')
+            }
         }
-    }
-    function checkWorks(){
-        if(window.pageYOffset + 100 > landingTopHeight){
-            body.style.backgroundColor = "var(--bookopus)"
-            if (landingTopWidth > 900){
-                logoInner.style.fill = "var(--light)"
-                logoOuter.style.stroke = "var(--dark)"
-                for(let i = 0; i < links.length; i++){
-                    links[i].style.color = "var(--dark)"
+        function checkWorks(){
+            if(window.pageYOffset + 100 > landingTopHeight){
+                body.style.backgroundColor = "var(--bookopus)"
+                if (landingTopWidth > 900){
+                    logoInner.style.fill = "var(--light)"
+                    logoOuter.style.stroke = "var(--dark)"
+                    for(let i = 0; i < links.length; i++){
+                        links[i].style.color = "var(--dark)"
+                    }
+                }
+            }    else{ /* Default Values */
+                body.style.backgroundColor = "var(--light)"
+                if (landingTopWidth > 900){
+                    logoInner.style.fill = "var(--cta)"
+                    logoOuter.style.stroke = "var(--dark)"
+                    for(let i = 0; i < links.length; i++){
+                        links[i].style.color = "var(--dark)"
+                    }
                 }
             }
-        }    else{ /* Default Values */
-            body.style.backgroundColor = "var(--light)"
+        }
+        checkWorks();
+        if(window.pageYOffset + contact.scrollHeight - 450  > landingTopHeight +  contact.scrollHeight ){
+            body.style.backgroundColor = "var(--dark)"
             if (landingTopWidth > 900){
                 logoInner.style.fill = "var(--cta)"
-                logoOuter.style.stroke = "var(--dark)"
+                logoOuter.style.stroke = "var(--light)"
                 for(let i = 0; i < links.length; i++){
-                    links[i].style.color = "var(--dark)"
+                    links[i].style.color = "var(--light)"
                 }
             }
+        }else if (window.pageYOffset + 200 > landingTopHeight || window.pageYOffset + contact.scrollHeight - 900  < landingTopHeight +  contact.scrollHeight){
+            checkWorks();
         }
-    }
-    checkWorks();
-    if(window.pageYOffset + contact.scrollHeight - 450  > landingTopHeight +  contact.scrollHeight ){
-        body.style.backgroundColor = "var(--dark)"
-        if (landingTopWidth > 900){
-            logoInner.style.fill = "var(--cta)"
-            logoOuter.style.stroke = "var(--light)"
-            for(let i = 0; i < links.length; i++){
-                links[i].style.color = "var(--light)"
-            }
-        }
-    }else if (window.pageYOffset + 200 > landingTopHeight || window.pageYOffset + contact.scrollHeight - 900  < landingTopHeight +  contact.scrollHeight){
-        checkWorks();
-    }
-})
+    })
+}
 
 let menu = document.querySelector('.mobile-nav--menu')
     
@@ -193,5 +195,25 @@ function bodyOverflow(){
     }
     close.addEventListener("click", () => {
         body.style.overflowX = "visible"
+    })
+}
+
+if (document.querySelector('.case__mockup')){
+    window.addEventListener('scroll', () => {
+        const mockup = document.querySelector('.case__mockup');
+        const mockupImg = document.querySelector('.case__mockup img');
+        const bottomMock = document.querySelector('.case__bottom');
+        const bottomMockImg = Array.from(document.querySelectorAll('.case__bottom img'));
+        let mockupOffset = mockup.getBoundingClientRect().top
+        let bottomOffset = bottomMock.getBoundingClientRect().top
+
+        if (window.pageYOffset >= mockupOffset + 450){
+            mockupImg.classList.add('animate')
+        }
+        if (window.pageYOffset >= bottomOffset * 10){
+            for (let img in bottomMockImg){
+                bottomMockImg[img].classList.add('animate')
+            }
+        }
     })
 }
