@@ -3,7 +3,6 @@ if(document.querySelector('.hero')){
     let landingTop = document.querySelector('.hero').getBoundingClientRect()
     let landingTopWidth = landingTop.width
     let landingTopHeight = landingTop.height
-    let landingBookopusOffset = document.querySelector('#works1').getBoundingClientRect().top
 
     window.addEventListener("scroll", () => {
         let cardItem = Array.from(document.querySelectorAll('.cardimg__item'))
@@ -143,22 +142,20 @@ if (document.querySelector('.case__mockup')){
 
         const userFlow = Array.from(document.querySelectorAll('#userflow .st0'))
 
-        if (window.pageYOffset >= mockupOffset + 450){
+        if (mockupOffset < 450){
+            console.log(mockupOffset)
             mockupImg.classList.add('animate')
         }
-        if (window.pageYOffset >= mockupOffset + 1900){
+        if (mockupOffset < -550){
             for (let st0 in userFlow){
                 userFlow[st0].classList.add('animate')
             }
         }
-        if (window.pageYOffset >= bottomOffset * 10){
+        if (bottomOffset < 100){
             for (let img in bottomMockImg){
                 bottomMockImg[img].classList.add('animate')
             }
         }
-        if (window.pageYOffset >= mockupOffset + 450){
-            mockupImg.classList.add('animate')
-        }
-
     })
 }
+
