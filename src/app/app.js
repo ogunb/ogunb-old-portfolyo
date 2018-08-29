@@ -25,27 +25,27 @@ if(document.querySelector('.hero')){
         let contactTop = contact.top
 
         if(worksTop < 400){
-            for(let i = 0; i < cardItem.length; i++){
-                cardItem[i].classList.add('cardimg--reveal')
-            }
+            cardItem.forEach((item) => {
+                item.classList.add('cardimg--reveal')
+            })
         }
         if(worksTop < 300){
             body.style.backgroundColor = "var(--bookopus)"
             if (landingTopWidth > 900){
                 logoInner.style.fill = "var(--light)"
                 logoOuter.style.stroke = "var(--dark)"
-                for(let i = 0; i < links.length; i++){
-                    links[i].style.color = "var(--dark)"
-                }
+                links.forEach((link) => {
+                    link.style.color = "var(--dark)"
+                })
             }
         }else{ /* Default Values */
             body.style.backgroundColor = "var(--light)"
             if (landingTopWidth > 900){
                 logoInner.style.fill = "var(--cta)"
                 logoOuter.style.stroke = "var(--dark)"
-                for(let i = 0; i < links.length; i++){
-                    links[i].style.color = "var(--dark)"
-                }
+                links.forEach((link) => {
+                    link.style.color = "var(--dark)"
+                })
             }
         }
         if(contactTop < 200){
@@ -53,9 +53,9 @@ if(document.querySelector('.hero')){
             if (landingTopWidth > 900){
                 logoInner.style.fill = "var(--cta)"
                 logoOuter.style.stroke = "var(--light)"
-                for(let i = 0; i < links.length; i++){
-                    links[i].style.color = "var(--light)"
-                }
+                links.forEach((link) => {
+                    link.style.color = "var(--light)"
+                })
             }
         }
     })
@@ -164,4 +164,10 @@ if (document.querySelector('.case__mockup')){
         }
     })
 }
+
+// fetch('bookopus.html')
+//     .then((res) => res.text())
+//     .then((data) => {
+//         document.getElementById('content').innerHTML = data
+//     })
 
