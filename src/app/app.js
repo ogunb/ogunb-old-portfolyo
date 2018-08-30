@@ -1,12 +1,12 @@
 //----------Index Scroll Effects----------//
+let works = document.querySelector('.works').getBoundingClientRect()
+let worksTop = works.top
 if(document.querySelector('.hero')){
     let landingTop = document.querySelector('.hero').getBoundingClientRect()
     let landingTopWidth = landingTop.width
     let landingTopHeight = landingTop.height
     let landingTopX = landingTop.top
 
-    let works = document.querySelector('.works').getBoundingClientRect()
-    let worksTop = works.top
 
     let contact = document.querySelector('.contact').getBoundingClientRect()
     let contactTop = contact.top
@@ -147,49 +147,74 @@ function fetchBookopusStudy(){
 
     const caseHtml = document.querySelector('.case__html');
     const caseBg = document.querySelector('.case__bg');
+    
+    const index = document.querySelector('#index');
 
-    const caseClose = document.querySelector('.case__close');
-
+    fetch('bookopus.html')
+    .then((res) => res.text())
+    .then((data) => {
+        caseHtml.innerHTML = data
+    })
+    
+    
     cardImg.style.animation = "slideLeft 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
     worksArticle.style.animation = "slideRight 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
-
+    
     caseBg.style.opacity = "1"
     caseBg.style.visibility = "visible"
 
-    window.scrollTo(0, 0);
+    setTimeout(() => {
+        caseHtml.style.opacity = "1"
+        caseHtml.style.visibility = "visible"
+        index.style.visibility = "hidden"
 
-    fetch('bookopus.html')
-        .then((res) => res.text())
-        .then((data) => {
-            caseHtml.innerHTML = data
+        window.scrollTo(0, 0);
+
+        window.addEventListener('scroll', () => {
+            const mockup = document.querySelector('.case__mockup');
+            const mockupImg = document.querySelector('.case__mockup img');
+            const bottomMock = document.querySelector('.case__bottom');
+            const bottomMockImg = Array.from(document.querySelectorAll('.case__bottom img'));
+
+            let mockupOffset = mockup.getBoundingClientRect().top
+            let bottomOffset = bottomMock.getBoundingClientRect().top
+
+            const userFlow = Array.from(document.querySelectorAll('#userflow .st0'))
+
+            if (mockupOffset < 450){
+                mockupImg.classList.add('animate')
+            }
+            if (mockupOffset < -430){
+                for (let st0 in userFlow){
+                    userFlow[st0].classList.add('animate')
+                }
+            }
+            if (bottomOffset < 400){
+                for (let img in bottomMockImg){
+                    bottomMockImg[img].classList.add('animate')
+                }
+            }
         })
 
-    window.addEventListener('scroll', () => {
-        const mockup = document.querySelector('.case__mockup');
-        const mockupImg = document.querySelector('.case__mockup img');
-        const bottomMock = document.querySelector('.case__bottom');
-        const bottomMockImg = Array.from(document.querySelectorAll('.case__bottom img'));
+        const caseClose = document.querySelector('.case__close');
+    
+        caseClose.addEventListener('click', () =>{
+            caseHtml.style.opacity = "0"
+            caseHtml.style.visibility = "hidden"
+            index.style.visibility = "visible"
+    
+            setTimeout(() => {
+                window.scrollTo(0, worksTop);
+                cardImg.style.animation = "slideLeftBack 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
+                worksArticle.style.animation = "slideRightBack 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
+                
+                caseBg.style.opacity = "0"
+                caseBg.style.visibility = "hidden"
+            }, 100);
+            caseHtml.innerHTML = ' '
+        });
 
-        let mockupOffset = mockup.getBoundingClientRect().top
-        let bottomOffset = bottomMock.getBoundingClientRect().top
-
-        const userFlow = Array.from(document.querySelectorAll('#userflow .st0'))
-
-        if (mockupOffset < 450){
-            mockupImg.classList.add('animate')
-        }
-        if (mockupOffset < -430){
-            for (let st0 in userFlow){
-                userFlow[st0].classList.add('animate')
-            }
-        }
-        if (bottomOffset < 400){
-            for (let img in bottomMockImg){
-                bottomMockImg[img].classList.add('animate')
-            }
-        }
-    })
-
-    caseClose.addEventListener('click', () => caseHtml.innerHTML = '');
+    }, 1500);
+   
 
 }
