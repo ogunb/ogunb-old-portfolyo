@@ -4,13 +4,7 @@ let worksTop = works.top
 if(document.querySelector('.hero')){
     let landingTop = document.querySelector('.hero').getBoundingClientRect()
     let landingTopWidth = landingTop.width
-    let landingTopHeight = landingTop.height
-    let landingTopX = landingTop.top
-
-
-    let contact = document.querySelector('.contact').getBoundingClientRect()
-    let contactTop = contact.top
-
+    
     window.addEventListener("scroll", () => {
         if(!document.querySelector('.case__html .main-wrapper')){
             let cardItem = Array.from(document.querySelectorAll('.cardimg__item'))
