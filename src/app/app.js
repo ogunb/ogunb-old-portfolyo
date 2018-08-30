@@ -1,4 +1,4 @@
-//----------Scroll Effects----------//
+//----------Index Scroll Effects----------//
 if(document.querySelector('.hero')){
     let landingTop = document.querySelector('.hero').getBoundingClientRect()
     let landingTopWidth = landingTop.width
@@ -12,50 +12,52 @@ if(document.querySelector('.hero')){
     let contactTop = contact.top
 
     window.addEventListener("scroll", () => {
-        let cardItem = Array.from(document.querySelectorAll('.cardimg__item'))
-        let body = document.querySelector('body')
-        let logoInner = document.querySelector('.logo svg .c')
-        let logoOuter = document.querySelector('.logo svg .d')
-        let links = Array.from(document.querySelectorAll('.nav ul li a'))
+        if(!document.querySelector('.case__html .main-wrapper')){
+            let cardItem = Array.from(document.querySelectorAll('.cardimg__item'))
+            let body = document.querySelector('body')
+            let logoInner = document.querySelector('.logo svg .c')
+            let logoOuter = document.querySelector('.logo svg .d')
+            let links = Array.from(document.querySelectorAll('.nav ul li a'))
 
-        let works = document.querySelector('.works').getBoundingClientRect()
-        let worksTop = works.top
+            let works = document.querySelector('.works').getBoundingClientRect()
+            let worksTop = works.top
 
-        let contact = document.querySelector('.contact').getBoundingClientRect()
-        let contactTop = contact.top
+            let contact = document.querySelector('.contact').getBoundingClientRect()
+            let contactTop = contact.top
 
-        if(worksTop < 400){
-            cardItem.forEach((item) => {
-                item.classList.add('cardimg--reveal')
-            })
-        }
-        if(worksTop < 300){
-            body.style.backgroundColor = "var(--bookopus)"
-            if (landingTopWidth > 900){
-                logoInner.style.fill = "var(--light)"
-                logoOuter.style.stroke = "var(--dark)"
-                links.forEach((link) => {
-                    link.style.color = "var(--dark)"
+            if(worksTop < 400){
+                cardItem.forEach((item) => {
+                    item.classList.add('cardimg--reveal')
                 })
             }
-        }else{ /* Default Values */
-            body.style.backgroundColor = "var(--light)"
-            if (landingTopWidth > 900){
-                logoInner.style.fill = "var(--cta)"
-                logoOuter.style.stroke = "var(--dark)"
-                links.forEach((link) => {
-                    link.style.color = "var(--dark)"
-                })
+            if(worksTop < 300){
+                body.style.backgroundColor = "var(--bookopus)"
+                if (landingTopWidth > 900){
+                    logoInner.style.fill = "var(--light)"
+                    logoOuter.style.stroke = "var(--dark)"
+                    links.forEach((link) => {
+                        link.style.color = "var(--dark)"
+                    })
+                }
+            }else{ /* Default Values */
+                body.style.backgroundColor = "var(--light)"
+                if (landingTopWidth > 900){
+                    logoInner.style.fill = "var(--cta)"
+                    logoOuter.style.stroke = "var(--dark)"
+                    links.forEach((link) => {
+                        link.style.color = "var(--dark)"
+                    })
+                }
             }
-        }
-        if(contactTop < 200){
-            body.style.backgroundColor = "var(--dark)"
-            if (landingTopWidth > 900){
-                logoInner.style.fill = "var(--cta)"
-                logoOuter.style.stroke = "var(--light)"
-                links.forEach((link) => {
-                    link.style.color = "var(--light)"
-                })
+            if(contactTop < 200){
+                body.style.backgroundColor = "var(--dark)"
+                if (landingTopWidth > 900){
+                    logoInner.style.fill = "var(--cta)"
+                    logoOuter.style.stroke = "var(--light)"
+                    links.forEach((link) => {
+                        link.style.color = "var(--light)"
+                    })
+                }
             }
         }
     })
@@ -135,10 +137,34 @@ function bodyOverflow(){
     })
 }
 
-if (document.querySelector('.case__mockup')){
+const bookopusWorks = document.querySelector('.bookopus');
+
+bookopusWorks.addEventListener('click', fetchBookopusStudy);
+
+function fetchBookopusStudy(){
+    const cardImg = document.querySelector('.cardimg--bookopus');
+    const worksArticle = document.querySelector('.works__article');
+
+    const caseHtml = document.querySelector('.case__html');
+    const caseBg = document.querySelector('.case__bg');
+
+    const caseClose = document.querySelector('.case__close');
+
+    cardImg.style.animation = "slideLeft 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
+    worksArticle.style.animation = "slideRight 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
+
+    caseBg.style.opacity = "1"
+    caseBg.style.visibility = "visible"
+
+    window.scrollTo(0, 0);
+
+    fetch('bookopus.html')
+        .then((res) => res.text())
+        .then((data) => {
+            caseHtml.innerHTML = data
+        })
 
     window.addEventListener('scroll', () => {
-
         const mockup = document.querySelector('.case__mockup');
         const mockupImg = document.querySelector('.case__mockup img');
         const bottomMock = document.querySelector('.case__bottom');
@@ -163,4 +189,7 @@ if (document.querySelector('.case__mockup')){
             }
         }
     })
+
+    caseClose.addEventListener('click', () => caseHtml.innerHTML = '');
+
 }
