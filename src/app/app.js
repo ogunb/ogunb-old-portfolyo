@@ -164,10 +164,3 @@ if (document.querySelector('.case__mockup')){
         }
     })
 }
-
-// fetch('bookopus.html')
-//     .then((res) => res.text())
-//     .then((data) => {
-//         document.getElementById('content').innerHTML = data
-//     })
-
