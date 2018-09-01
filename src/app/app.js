@@ -157,7 +157,13 @@ function fetchBookopusStudy(){
     caseBg.style.opacity = "1"
     caseBg.style.visibility = "visible"
 
+    
     setTimeout(() => {
+        let mobileNav = document.querySelector('.mobile-nav')
+
+        mobileNav.addEventListener('click', closeCase)
+
+        menu.style.display = "none"
         caseHtml.style.opacity = "1"
         caseHtml.style.visibility = "visible"
         index.style.visibility = "hidden"
@@ -165,34 +171,38 @@ function fetchBookopusStudy(){
         window.scrollTo(0, 0);
 
         window.addEventListener('scroll', () => {
-            const mockup = document.querySelector('.case__mockup');
-            const mockupImg = document.querySelector('.case__mockup img');
-            const bottomMock = document.querySelector('.case__bottom');
-            const bottomMockImg = Array.from(document.querySelectorAll('.case__bottom img'));
+            if(document.querySelector('.case__html .main-wrapper')){
+                const mockup = document.querySelector('.case__mockup');
+                const mockupImg = document.querySelector('.case__mockup img');
+                const bottomMock = document.querySelector('.case__bottom');
+                const bottomMockImg = Array.from(document.querySelectorAll('.case__bottom img'));
 
-            let mockupOffset = mockup.getBoundingClientRect().top
-            let bottomOffset = bottomMock.getBoundingClientRect().top
+                let mockupOffset = mockup.getBoundingClientRect().top
+                let bottomOffset = bottomMock.getBoundingClientRect().top
 
-            const userFlow = Array.from(document.querySelectorAll('#userflow .st0'))
+                const userFlow = Array.from(document.querySelectorAll('#userflow .st0'))
 
-            if (mockupOffset < 450){
-                mockupImg.classList.add('animate')
-            }
-            if (mockupOffset < -430){
-                for (let st0 in userFlow){
-                    userFlow[st0].classList.add('animate')
+                if (mockupOffset < 450){
+                    mockupImg.classList.add('animate')
                 }
-            }
-            if (bottomOffset < 400){
-                for (let img in bottomMockImg){
-                    bottomMockImg[img].classList.add('animate')
+                if (mockupOffset < -430){
+                    for (let st0 in userFlow){
+                        userFlow[st0].classList.add('animate')
+                    }
+                }
+                if (bottomOffset < 400){
+                    for (let img in bottomMockImg){
+                        bottomMockImg[img].classList.add('animate')
+                    }
                 }
             }
         })
 
         const caseClose = document.querySelector('.case__close');
     
-        caseClose.addEventListener('click', () =>{
+        caseClose.addEventListener('click', closeCase);
+
+        function closeCase() {
             caseHtml.style.opacity = "0"
             caseHtml.style.visibility = "hidden"
             index.style.visibility = "visible"
@@ -206,7 +216,7 @@ function fetchBookopusStudy(){
                 caseBg.style.visibility = "hidden"
             }, 100);
             caseHtml.innerHTML = ' '
-        });
+        }
 
     }, 1500);
    

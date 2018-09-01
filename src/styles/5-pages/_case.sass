@@ -23,8 +23,11 @@
         top: 6vh
         left: 2vw
         color: var(--medium)
+        z-index: 9999
         @media screen and (max-width: 800px)
-            display: none
+            left: auto
+            top: 2vh
+            right: 6vw
     &__landing
         display: flex
         flex-direction: column
@@ -43,7 +46,7 @@
                 filter: drop-shadow(1rem 4.1rem 5rem rgba(0,0,0,.16)) 
                 animation: slideUp 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1 1500ms
                 opacity: 0
-                width: 60%
+                width: 58.8%
                 height: auto
             img:last-child
                 filter: drop-shadow(2rem 1.5rem 2rem rgba(0,0,0,.16)) 
@@ -51,7 +54,7 @@
                 margin-bottom: -10%
                 animation: slideUp 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1 1800ms
                 opacity: 0
-                width: 50%
+                width: 40.3%
                 height: auto
     &__content
         .wrapper
