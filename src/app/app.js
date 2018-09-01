@@ -1,6 +1,8 @@
 //----------Index Scroll Effects----------//
-let works = document.querySelector('.works').getBoundingClientRect()
-let worksTop = works.top
+let works = document.querySelector('.works').getBoundingClientRect();
+let worksTop = works.top;
+let logoInner = document.querySelector('.logo svg .c');
+
 if(document.querySelector('.hero')){
     let landingTop = document.querySelector('.hero').getBoundingClientRect()
     let landingTopWidth = landingTop.width
@@ -9,7 +11,6 @@ if(document.querySelector('.hero')){
         if(!document.querySelector('.case__html .main-wrapper')){
             let cardItem = Array.from(document.querySelectorAll('.cardimg__item'))
             let body = document.querySelector('body')
-            let logoInner = document.querySelector('.logo svg .c')
             let logoOuter = document.querySelector('.logo svg .d')
             let links = Array.from(document.querySelectorAll('.nav ul li a'))
 
@@ -159,14 +160,12 @@ function fetchBookopusStudy(){
 
     
     setTimeout(() => {
-        let mobileNav = document.querySelector('.mobile-nav')
-
-        mobileNav.addEventListener('click', closeCase)
-
         menu.style.display = "none"
         caseHtml.style.opacity = "1"
         caseHtml.style.visibility = "visible"
         index.style.visibility = "hidden"
+
+        logoInner.style.fill = "var(--cta)"
 
         window.scrollTo(0, 0);
 
@@ -198,14 +197,18 @@ function fetchBookopusStudy(){
             }
         })
 
+        const mobileNav = document.querySelector('.mobile-nav');
         const caseClose = document.querySelector('.case__close');
     
         caseClose.addEventListener('click', closeCase);
+        mobileNav.addEventListener('click', closeCase);
+
 
         function closeCase() {
             caseHtml.style.opacity = "0"
             caseHtml.style.visibility = "hidden"
             index.style.visibility = "visible"
+            menu.style.display = "block"
     
             setTimeout(() => {
                 window.scrollTo(0, worksTop);
@@ -219,6 +222,4 @@ function fetchBookopusStudy(){
         }
 
     }, 1500);
-   
-
 }
