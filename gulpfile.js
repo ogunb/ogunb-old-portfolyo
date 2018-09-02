@@ -3,7 +3,6 @@ var gulp = require('gulp'),
     autoprefix = require('gulp-autoprefixer'),
     browserSync = require('browser-sync').create(),
     cleanCss = require('gulp-clean-css'),
-    uglify = require('gulp-uglify'),
     babel = require('gulp-babel'),
     sourcemap = require('gulp-sourcemaps'),
     imgmin = require('gulp-imagemin'),
@@ -49,10 +48,10 @@ gulp.task('javascript', function(){
         .pipe(plumber())
         .pipe(sourcemap.init())
         .pipe(concat('app.js'))
-        // .pipe(babel({
-        //     presets: ['env']
-        // }))
-        // .pipe(uglify())
+        .pipe(babel({
+            presets: ['es2015'],
+            minified: true
+        }))
         .pipe(sourcemap.write())
     
         .pipe(gulp.dest(paths.jsDest));
