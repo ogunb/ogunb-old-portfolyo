@@ -152,9 +152,12 @@ function fetchBookopusStudy(){
     })
     
     
-    cardImg.style.animation = "slideLeft 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
-    worksArticle.style.animation = "slideRight 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
+    // cardImg.style.animation = "slideLeft 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
+    // worksArticle.style.animation = "slideRight 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
     
+    cardImg.style.opacity = "0"
+    worksArticle.style.opacity = "0"
+
     caseBg.style.opacity = "1"
     caseBg.style.visibility = "visible"
 
@@ -184,11 +187,11 @@ function fetchBookopusStudy(){
                 if (mockupOffset < 450){
                     mockupImg.classList.add('animate')
                 }
-                if (mockupOffset < -430){
-                    for (let st0 in userFlow){
-                        userFlow[st0].classList.add('animate')
-                    }
-                }
+                // if (mockupOffset < -430){
+                //     for (let st0 in userFlow){
+                //         userFlow[st0].classList.add('animate')
+                //     }
+                // }
                 if (bottomOffset < 400){
                     for (let img in bottomMockImg){
                         bottomMockImg[img].classList.add('animate')
@@ -212,8 +215,11 @@ function fetchBookopusStudy(){
     
             setTimeout(() => {
                 window.scrollTo(0, worksTop);
-                cardImg.style.animation = "slideLeftBack 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
-                worksArticle.style.animation = "slideRightBack 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
+                // cardImg.style.animation = "slideLeftBack 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
+                // worksArticle.style.animation = "slideRightBack 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
+                    
+                cardImg.style.opacity = "1"
+                worksArticle.style.opacity = "1"
                 
                 caseBg.style.opacity = "0"
                 caseBg.style.visibility = "hidden"
