@@ -82,4 +82,6 @@ package-lock.json
 # Images
 src/images/
 
+.vscode
+
 # End of https://www.gitignore.io/api/node
