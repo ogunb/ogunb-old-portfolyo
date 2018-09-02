@@ -14,7 +14,7 @@ var paths = {
         styleSrc : 'src/styles/**/*.sass',
         styleDest : 'dist/assets/styles',
 
-        htmlDest : 'dist/*/*.html',
+        htmlDest : 'dist/**/*.html',
 
         jsSrc : 'src/app/**/*.js',
         jsDest : 'dist/assets/app',
