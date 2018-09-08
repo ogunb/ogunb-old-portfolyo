@@ -13,6 +13,8 @@
     transform: translateX(110%)
     transition: all 500ms ease-in-out
     box-shadow: -2.5rem 0 5rem -2rem rgba(0,0,0,.4)
+    color: var(--light)
+
     &--active
         transform: translateX(0%)
     &__close
@@ -24,8 +26,11 @@
             background: var(--medium)
     &__content
         width: 60%
+        h3
+            color: var(--light)
+            margin-bottom: 1.5rem
+
     &__paragraphs
-        color: var(--dark)
         overflow-y: scroll
         height: 50vh
         padding-right: 4rem
