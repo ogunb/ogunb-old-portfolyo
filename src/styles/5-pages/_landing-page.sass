@@ -11,6 +11,11 @@
         margin-top: 11rem
         h1
             margin-bottom: 2rem
+            &::before
+                content: '{ogün.babacan}'
+                @media screen and (max-width: 700px)
+                    content: '{ogün}'
+
         h5
             padding-left: .5rem
             margin-bottom: 1rem
@@ -24,6 +29,7 @@
     flex-direction: column
     justify-content: center
     padding-top: 10%
+    text-align: center
     h2
         margin-bottom: 1rem
         color: var(--light)
@@ -31,8 +37,6 @@
         color: var(--darker)
     p
         color: var(--light)
-    .e-mail, p
-        text-align: center
     .social-media svg:hover .a
         fill: var(--light)
     @media screen and (max-width: 900px)
