@@ -1,5 +1,18 @@
 .works
-    .bookopus
+    .coming-soon
+        opacity: 0
+        visibility: hidden
+        transform: translateY(50%)
+        font-size: 25vw
+        text-align: center
+        line-height: .5
+        font-weight: 700
+        position: absolute
+        margin: 0 auto
+        z-index: 500
+        color: var(--darker)
+        transition: all 1s cubic-bezier(0.69, 0.02, 0.29, 1.16)
+    .bookopus, .rennie
         justify-content: space-around!important
         padding: 0 5%
         @media screen and (max-width: 750px)
@@ -29,3 +42,12 @@
                 left: -55%
     &__title
         margin-bottom: 1rem
+
+    .rennie
+        .works__article, h2
+            text-align: right
+            color: var(--light)
+        .works__name::before
+            background: var(--light)
+            left: auto
+            right: -20%

@@ -16,8 +16,9 @@
     &--bookopus
         background: url('../images/bookopus-thumb-bg.jpg')
         transition: all 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16)
-        &.animate
-            animation: slideLeft 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1
+    &--rennie
+        background: url('../images/rennie-thumb-bg.jpg')
+        transition: all 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16)
     &__item
         position: absolute
         transform: translateY(5rem)
@@ -30,6 +31,9 @@
         opacity: 0
         transition: all 600ms cubic-bezier(0.69, 0.02, 0.29, 1.16)
         transition-delay: 100ms
+    .rennie &__item
+        left: auto
+        right: calc(58% - (300px/2))
     &__back
         z-index: 1
         height: 204px
@@ -38,6 +42,9 @@
         transform: translateY(5rem)
         transition: all 600ms cubic-bezier(0.69, 0.02, 0.29, 1.16)
         transition-delay: 0
+    .rennie &__back
+        left: auto
+        right: 18%
     &--reveal
         transform: translateY(0)
         opacity: 1

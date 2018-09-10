@@ -2,6 +2,22 @@
 let works = document.querySelector(".works").getBoundingClientRect();
 let worksTop = works.top;
 let logoInner = document.querySelector(".logo svg .c");
+let rennie = document.querySelector(".rennie");
+
+rennie.addEventListener("click", () => {
+	let coming = document.querySelector(".coming-soon");
+	coming.style.opacity = "1";
+	coming.style.visibility = "visible";
+	coming.style.transform = "translateY(0)";
+	setTimeout(function() {
+		coming.style.opacity = "0";
+		coming.style.visibility = "hidden";
+		coming.style.transform = "translateY(-50%)";
+	}, 1500);
+	setTimeout(function() {
+		coming.style.transform = "translateY(50%)";
+	}, 2250);
+});
 
 if (document.querySelector(".hero")) {
 	let landingTop = document.querySelector(".hero").getBoundingClientRect();
@@ -25,6 +41,8 @@ if (document.querySelector(".hero")) {
 			let works = document.querySelector(".works").getBoundingClientRect();
 			let worksTop = works.top;
 
+			let rennieTop = rennie.getBoundingClientRect().top;
+
 			let contact = document.querySelector(".contact").getBoundingClientRect();
 			let contactTop = contact.top;
 
@@ -32,7 +50,18 @@ if (document.querySelector(".hero")) {
 				cardItem.forEach(item => {
 					item.classList.add("cardimg--reveal");
 				});
+			} else if (worksTop > 400) {
+				/* Default Values */
+				body.style.backgroundColor = "var(--light)";
+				if (landingTopWidth > 900) {
+					logoInner.style.fill = "var(--cta)";
+					logoOuter.style.stroke = "var(--dark)";
+					links.forEach(link => {
+						link.style.color = "var(--dark)";
+					});
+				}
 			}
+
 			if (worksTop < 300) {
 				body.style.backgroundColor = "var(--bookopus)";
 				if (landingTopWidth > 900) {
@@ -42,14 +71,14 @@ if (document.querySelector(".hero")) {
 						link.style.color = "var(--dark)";
 					});
 				}
-			} else {
-				/* Default Values */
-				body.style.backgroundColor = "var(--light)";
+			}
+			if (rennieTop < 300) {
+				body.style.backgroundColor = "var(--rennie)";
 				if (landingTopWidth > 900) {
-					logoInner.style.fill = "var(--cta)";
+					logoInner.style.fill = "var(--light)";
 					logoOuter.style.stroke = "var(--dark)";
 					links.forEach(link => {
-						link.style.color = "var(--dark)";
+						link.style.color = "var(--light)";
 					});
 				}
 			}
