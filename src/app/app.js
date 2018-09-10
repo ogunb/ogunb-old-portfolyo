@@ -73,6 +73,7 @@ menu.addEventListener("click", () => {
 	let logo = document.querySelector(".mobile-nav .logo .c");
 	let body = document.querySelector("body");
 	let links = document.querySelector(".mobile-nav__links");
+	let link = Array.from(document.querySelectorAll(".mobile-nav__links li"));
 
 	menu.classList.toggle("active");
 
@@ -81,14 +82,24 @@ menu.addEventListener("click", () => {
 		body.style.overflowY = "hidden";
 		links.style.opacity = "1";
 		links.style.transform = "scale(1)";
+		setTimeout(function() {
+			link.forEach(item => {
+				item.style.opacity = "1";
+			});
+		}, 290);
 	} else {
 		closeTab();
 	}
 	function closeTab() {
-		logo.style.fill = "var(--cta)";
-		body.style.overflowY = "visible";
-		links.style.opacity = "0";
-		links.style.transform = "scale(1, 0)";
+		link.forEach(item => {
+			item.style.opacity = "0";
+		});
+		setTimeout(function() {
+			logo.style.fill = "var(--cta)";
+			body.style.overflowY = "visible";
+			links.style.opacity = "0";
+			links.style.transform = "scale(1, 0)";
+		}, 290);
 	}
 	links.addEventListener("click", () => {
 		if (menu.classList.contains("active")) {
