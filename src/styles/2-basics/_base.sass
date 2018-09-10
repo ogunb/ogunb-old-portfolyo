@@ -28,20 +28,22 @@ body
   
 .wrapper
   width: 100%
-  max-width: 1040px
+  max-width: 80%
   margin: 0 auto
   position: relative
   display: flex
-  justify-content: space-between
+  justify-content: space-around
   align-items: center
   flex-direction: row
   height: 100vh
+  @media screen and (max-width: 700px)
+    max-width: 100%
 
   &--small
-    max-width: 870px
+    max-width: 87rem
   
   &--smaller
-    max-width: 710px
+    max-width: 71rem
 
 .logo 
   svg

@@ -1,4 +1,5 @@
 .works
+    overflow: hidden
     .coming-soon
         opacity: 0
         visibility: hidden
@@ -6,14 +7,17 @@
         font-size: 25vw
         text-align: center
         line-height: .5
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
         font-weight: 700
-        position: absolute
-        margin: 0 auto
+        position: fixed
+        margin: auto
         z-index: 500
         color: var(--darker)
         transition: all 1s cubic-bezier(0.69, 0.02, 0.29, 1.16)
     .bookopus, .rennie
-        justify-content: space-around!important
         padding: 0 5%
         @media screen and (max-width: 750px)
             padding: 0
@@ -27,19 +31,7 @@
             padding-right: 2rem
     &__name
         color: var(--dark)
-        position: relative
-        &::before
-            content: ''
-            display: inline-block
-            width: 15rem
-            height: .3rem
-            background: var(--medium)
-            position: absolute
-            top: 225%
-            left: -20%
-            z-index: -1
-            @media screen and (max-width: 900px)
-                left: -55%
+
     &__title
         margin-bottom: 1rem
 

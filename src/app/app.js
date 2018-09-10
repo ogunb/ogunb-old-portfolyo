@@ -8,7 +8,7 @@ rennie.addEventListener("click", () => {
 	let coming = document.querySelector(".coming-soon");
 	coming.style.opacity = "1";
 	coming.style.visibility = "visible";
-	coming.style.transform = "translateY(0)";
+	coming.style.transform = "translateY(10%)";
 	setTimeout(function() {
 		coming.style.opacity = "0";
 		coming.style.visibility = "hidden";
