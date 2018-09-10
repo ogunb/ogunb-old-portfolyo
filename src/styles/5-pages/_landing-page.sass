@@ -11,19 +11,19 @@
         margin-top: 11rem
         h1
             margin-bottom: 2rem
-            &::before
-                content: '{ogün.babacan}'
-                @media screen and (max-width: 700px)
-                    content: '{ogün}'
-
         h5
             padding-left: .5rem
             margin-bottom: 1rem
-@media screen and (max-width: 1000px)
-    .hero
+    @media screen and (max-width: 1000px)
         overflow-x: hidden
         &__left
             margin-left: 1rem
+    @media screen and(max-width: 600px)
+        text-align: center
+        justify-content: center
+        padding-right: .2rem
+        &__left
+            margin-top: 6rem
 
 .contact
     flex-direction: column
@@ -42,4 +42,4 @@
     @media screen and (max-width: 900px)
         padding: 0 2rem
         .e-mail
-            font-size: 3rem
+            font-size: 2.7rem
