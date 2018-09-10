@@ -6,6 +6,14 @@ let logoInner = document.querySelector(".logo svg .c");
 if (document.querySelector(".hero")) {
 	let landingTop = document.querySelector(".hero").getBoundingClientRect();
 	let landingTopWidth = landingTop.width;
+	let heroImg = document.querySelector(".cardimg--hero");
+	let counter = 160;
+
+	heroImg.addEventListener("mousemove", () => {
+		counter += 10;
+		heroImg.style.filter = `hue-rotate(${counter}deg)`;
+		console.log("IM ALIVE");
+	});
 
 	window.addEventListener("scroll", () => {
 		if (!document.querySelector(".case__html .main-wrapper")) {
