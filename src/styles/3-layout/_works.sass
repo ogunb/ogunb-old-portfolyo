@@ -1,5 +1,10 @@
 .works
-    justify-content: space-between
+    .bookopus
+        justify-content: space-around!important
+        padding: 0 5%
+        @media screen and (max-width: 750px)
+            padding: 0
+            justify-content: space-between
     &__article
         transition: all 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16)
         *
@@ -13,12 +18,12 @@
         &::before
             content: ''
             display: inline-block
-            width: 12rem
+            width: 15rem
             height: .3rem
             background: var(--medium)
             position: absolute
             top: 225%
-            left: -15%
+            left: -20%
             z-index: -1
             @media screen and (max-width: 900px)
                 left: -55%
