@@ -144,10 +144,11 @@ let aboutTriMob = document.querySelector(".about--mobile");
 aboutTriDesk.addEventListener("click", openAbout);
 aboutTriMob.addEventListener("click", () => {
 	openAbout();
-	bodyOverflow();
+	// bodyOverflow();
 });
 
 function openAbout() {
+	let body = document.querySelector("body");
 	let logo = document.querySelector(".logo svg .c");
 	let about = document.querySelector(".about");
 	let close = document.querySelector(".about__close");
@@ -156,30 +157,33 @@ function openAbout() {
 	if (about.classList.contains("about--active") === true) {
 		aboutTriDesk.classList.add("highlight");
 		logo.style.fill = "var(--light)";
+		body.style.overflow = "hidden";
 	} else {
 		logo.style.fill = "var(--cta)";
 		aboutTriDesk.classList.remove("highlight");
+		body.style.overflow = "visible";
 	}
 	close.addEventListener("click", () => {
 		about.classList.remove("about--active");
 		logo.style.fill = "var(--cta)";
 		aboutTriDesk.classList.remove("highlight");
+		body.style.overflowX = "visible";
 	});
 }
-function bodyOverflow() {
-	let body = document.querySelector("body");
-	let about = document.querySelector(".about");
-	let close = document.querySelector(".about__close");
+// function bodyOverflow() {
+// 	let body = document.querySelector("body");
+// 	let about = document.querySelector(".about");
+// 	let close = document.querySelector(".about__close");
 
-	if (about.classList.contains("about--active") === true) {
-		body.style.overflowX = "hidden";
-	} else {
-		body.style.overflowX = "visible";
-	}
-	close.addEventListener("click", () => {
-		body.style.overflowX = "visible";
-	});
-}
+// 	if (about.classList.contains("about--active") === true) {
+// 		body.style.overflowX = "hidden";
+// 	} else {
+// 		body.style.overflowX = "visible";
+// 	}
+// 	close.addEventListener("click", () => {
+// 		body.style.overflowX = "visible";
+// 	});
+// }
 
 const bookopusWorks = document.querySelector(".bookopus");
 
