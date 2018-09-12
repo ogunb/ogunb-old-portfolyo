@@ -23,7 +23,7 @@ if (document.querySelector(".hero")) {
 	let landingTop = document.querySelector(".hero").getBoundingClientRect();
 	let landingTopWidth = landingTop.width;
 	let heroImg = document.querySelector(".cardimg--hero");
-	let counter = 160;
+	let counter = 0;
 
 	heroImg.addEventListener("mousemove", () => {
 		counter += 10;
@@ -167,7 +167,7 @@ function openAbout() {
 		about.classList.remove("about--active");
 		logo.style.fill = "var(--cta)";
 		aboutTriDesk.classList.remove("highlight");
-		body.style.overflowX = "visible";
+		body.style.overflow = "visible";
 	});
 }
 // function bodyOverflow() {

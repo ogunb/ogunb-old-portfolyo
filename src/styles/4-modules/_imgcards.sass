@@ -10,7 +10,25 @@
         width: 409px
         height: 409px
         cursor: none
-        filter: hue-rotate(180deg)
+        // filter: hue-rotate(180deg)
+        background: url(../images/hero-img.jpg)
+        background-size: cover
+        position: relative
+        transform: perspective(1000px) rotateX(-6.55deg) rotateY(-24.03deg) scale3d(1, 1, 1)
+        &::before
+            content: ''
+            position: absolute
+            top: 0
+            left: 0
+            width: 409px
+            height: 409px
+            background: url(../images/hero-img.jpg)
+            background-size: cover
+            opacity: 0.8
+            mix-blend-mode: hard-light
+        &:hover::before
+            animation: glitch .5s infinite cubic-bezier(0.69, 0.02, 0.29, 1.16);
+ 
         @media screen and (max-width: 600px)
             display: none
     &--rennie, &--bookopus

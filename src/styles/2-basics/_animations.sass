@@ -43,3 +43,27 @@
         transform: translateX(110vw)
     to
         transform: translateX(0)
+
+@keyframes glitch
+    0%
+        background-position: 0 0
+        filter: hue-rotate(0deg)
+    10%
+        background-position: 2px 0
+    20%
+        background-position: -2px 0
+    30%
+        background-position: 4px 0
+    40%
+        background-position: -6px 0
+    50%
+        background-position: 5px 0
+    60%
+        background-position: -2px 0
+    70%
+        background-position: 0 0px
+    80%
+        background-position: -1px 0px
+    100%
+        background-position: 0 0
+        filter: hue-rotate(360deg)
