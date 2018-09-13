@@ -3,7 +3,7 @@
     .coming-soon
         opacity: 0
         visibility: hidden
-        transform: translateY(50%)
+        transform: translateY(80vh)
         font-size: 25vw
         text-align: center
         line-height: .5
@@ -16,7 +16,8 @@
         margin: auto
         z-index: 500
         color: var(--darker)
-        transition: all 1s cubic-bezier(0.69, 0.02, 0.29, 1.16)
+        &.animate
+            animation: comingSoon 3s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1
     .bookopus, .rennie
         padding: 0 5%
         @media screen and (max-width: 750px)

@@ -6,17 +6,23 @@ let rennie = document.querySelector(".rennie");
 
 rennie.addEventListener("click", () => {
 	let coming = document.querySelector(".coming-soon");
-	coming.style.opacity = "1";
-	coming.style.visibility = "visible";
-	coming.style.transform = "translateY(10%)";
-	setTimeout(function() {
-		coming.style.opacity = "0";
-		coming.style.visibility = "hidden";
-		coming.style.transform = "translateY(-50%)";
-	}, 1500);
-	setTimeout(function() {
-		coming.style.transform = "translateY(50%)";
-	}, 2250);
+	coming.classList.add("animate");
+	if (coming.classList.contains("animate")) {
+		setTimeout(function() {
+			coming.classList.remove("animate");
+		}, 2900);
+	}
+	// coming.style.opacity = "1";
+	// coming.style.visibility = "visible";
+	// coming.style.transform = "translateY(10vh)";
+	// setTimeout(function() {
+	// 	coming.style.opacity = "0";
+	// 	coming.style.visibility = "hidden";
+	// 	coming.style.transform = "translateY(-50vh)";
+	// }, 1500);
+	// setTimeout(function() {
+	// 	coming.style.transform = "translateY(50vh)";
+	// }, 2250);
 });
 
 if (document.querySelector(".hero")) {
@@ -72,7 +78,7 @@ if (document.querySelector(".hero")) {
 					});
 				}
 			}
-			if (rennieTop < 300) {
+			if (rennieTop < 200) {
 				body.style.backgroundColor = "var(--rennie)";
 				if (landingTopWidth > 900) {
 					logoInner.style.fill = "var(--light)";
