@@ -1,23 +1,39 @@
-.case__bg
-    background: #f7f7f7
-    width: 100vw
-    height: 100vh
-    position: fixed
-    top: 0
-    left: 0
-    z-index: 10
-    opacity: 0
-    visibility: hidden
-    transition: all 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) 150ms
-.case__html
-    position: relative
-    z-index: 20
-    visibility: hidden
-    opacity: 0
+
     
 .case
     display: block
     position: relative
+    &__bg, &__bg-cta
+        background: var(--light)
+        width: 100vw
+        height: 0
+        position: fixed
+        top: 0
+        left: 0
+        z-index: 10
+        opacity: 0
+        visibility: hidden
+        transition: all 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) 500ms
+    &__bg-cta
+        transition: all 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16)
+        background: var(--cta)
+        z-index: 9
+    &__html
+        transition: all 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) 750ms
+        position: relative
+        z-index: 20
+        visibility: hidden
+        opacity: 0
+    &--active
+        .cardimg--bookopus
+            opacity: 0
+        .works__article
+            opacity: 0
+        & > .case__bg, & > .case__bg-cta
+            height: 100vh
+        & > .case__bg, & > .case__bg-cta, & > .case__html
+            opacity: 1
+            visibility: visible
     &__close
         position: fixed
         top: 6vh

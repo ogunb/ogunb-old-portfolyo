@@ -1,4 +1,5 @@
-function debounce(func, wait = 15, immediate = true) {
+// debounce function to prevent crashing events.
+function debounce(func, wait = 20, immediate = true) {
 	var timeout;
 	return function() {
 		var context = this,
@@ -13,297 +14,266 @@ function debounce(func, wait = 15, immediate = true) {
 		if (callNow) func.apply(context, args);
 	};
 }
-
-const works = document.querySelector('.works').getBoundingClientRect();
-const worksTop = works.top;
-const logoInner = document.querySelector('.logo svg .c');
-const rennie = document.querySelector('.rennie');
-
-rennie.addEventListener('click', () => {
-	const coming = document.querySelector('.coming-soon');
-	coming.classList.add('animate');
-	if (coming.classList.contains('animate')) {
-		setTimeout(function() {
-			coming.classList.remove('animate');
-		}, 2900);
-	}
-	// coming.style.opacity = "1";
-	// coming.style.visibility = "visible";
-	// coming.style.transform = "translateY(10vh)";
-	// setTimeout(function() {
-	// 	coming.style.opacity = "0";
-	// 	coming.style.visibility = "hidden";
-	// 	coming.style.transform = "translateY(-50vh)";
-	// }, 1500);
-	// setTimeout(function() {
-	// 	coming.style.transform = "translateY(50vh)";
-	// }, 2250);
-});
-
-if (document.querySelector('.hero')) {
-	const landingTop = document.querySelector('.hero').getBoundingClientRect();
-	const landingTopWidth = landingTop.width;
-	const heroImg = document.querySelector('.cardimg--hero');
-	let counter = 0;
-
-	heroImg.addEventListener('mousemove', () => {
-		counter += 10;
-		heroImg.style.filter = `hue-rotate(${counter}deg)`;
-		console.log('IM ALIVE');
+// We will change some styling on the page, depending on the section.
+function handleScroll() {
+	// Declare an empty obj for future use of styles.
+	let bodyStyles = {};
+	// Get sections and their offset from top and put those into an object,
+	// so I can add more items in the future and it won't break.
+	const sectionNode = document.querySelectorAll('section');
+	let sections = {};
+	sectionNode.forEach(sec => {
+		sections[sec.classList[0]] = sec.offsetTop - sec.offsetHeight / 2;
 	});
-	function handleLandingScroll() {
-		if (!document.querySelector('.case__html .main-wrapper')) {
-			const cardItem = document.querySelectorAll('.cardimg__item');
-			const body = document.querySelector('body');
-			const logoOuter = document.querySelector('.logo svg .d');
-			const links = document.querySelectorAll('.nav ul li a');
-
-			const works = document.querySelector('.works').getBoundingClientRect();
-			const worksTop = works.top;
-
-			const rennieTop = rennie.getBoundingClientRect().top;
-
-			const contact = document
-				.querySelector('.contact')
-				.getBoundingClientRect();
-			const contactTop = contact.top;
-
-			if (worksTop < 400) {
-				cardItem.forEach(item => {
-					item.classList.add('cardimg--reveal');
-				});
-			} else if (worksTop > 400) {
-				/* Default Values */
-				body.style.backgroundColor = 'var(--light)';
-				if (landingTopWidth > 900) {
-					logoInner.style.fill = 'var(--cta)';
-					logoOuter.style.stroke = 'var(--dark)';
-					links.forEach(link => {
-						link.style.color = 'var(--dark)';
-					});
-				}
-			}
-
-			if (worksTop < 300) {
-				body.style.backgroundColor = 'var(--bookopus)';
-				if (landingTopWidth > 900) {
-					logoInner.style.fill = 'var(--light)';
-					logoOuter.style.stroke = 'var(--dark)';
-					links.forEach(link => {
-						link.style.color = 'var(--dark)';
-					});
-				}
-			}
-			if (rennieTop < 200) {
-				body.style.backgroundColor = 'var(--rennie)';
-				if (landingTopWidth > 900) {
-					logoInner.style.fill = 'var(--light)';
-					logoOuter.style.stroke = 'var(--dark)';
-					links.forEach(link => {
-						link.style.color = 'var(--light)';
-					});
-				}
-			}
-			if (contactTop < 200) {
-				body.style.backgroundColor = 'var(--cta)';
-				if (landingTopWidth > 900) {
-					logoInner.style.fill = 'var(--darker)';
-					logoOuter.style.stroke = 'var(--light)';
-					links.forEach(link => {
-						link.style.color = 'var(--light)';
-					});
-				}
-			}
-		}
+	// Depending on the section you are on, the below code are going to set,
+	// bodyStyles object and we'll run a function to set styles real-time.
+	if (window.scrollY >= 250) {
+		const cardItem = document.querySelectorAll('.cardimg__item');
+		cardItem.forEach(item => {
+			item.classList.add('cardimg--reveal');
+		});
+		bodyStyles = {
+			body: 'var(--light)',
+			logoInner: 'var(--cta)',
+			logoOuter: 'var(--dark)',
+			link: 'var(--dark)'
+		};
+		handleScrollStyles(bodyStyles);
 	}
-	window.addEventListener('scroll', debounce(handleLandingScroll));
+	if (window.scrollY >= sections.bookopus) {
+		bodyStyles = {
+			body: 'var(--bookopus)',
+			logoInner: 'var(--light)',
+			logoOuter: 'var(--dark)',
+			link: 'var(--dark)'
+		};
+		handleScrollStyles(bodyStyles);
+	}
+	if (window.scrollY >= sections.rennie) {
+		bodyStyles = {
+			body: 'var(--rennie)',
+			logoInner: 'var(--light)',
+			logoOuter: 'var(--dark)',
+			link: 'var(--light)'
+		};
+		handleScrollStyles(bodyStyles);
+	}
+	if (window.scrollY >= sections.contact) {
+		bodyStyles = {
+			body: 'var(--cta)',
+			logoInner: 'var(--darker)',
+			logoOuter: 'var(--light)',
+			link: 'var(--light)'
+		};
+		handleScrollStyles(bodyStyles);
+	}
 }
 
-const menu = document.querySelector('.mobile-nav--menu');
+const body = document.querySelector('body');
+const logoInner = body.querySelector('.logo svg .c');
+function handleScrollStyles(styles) {
+	// const body
+	// const logoInner
+	const logoOuter = body.querySelector('.logo svg .d');
+	const links = body.querySelectorAll('.nav ul li a');
 
-menu.addEventListener('click', () => {
-	const logo = document.querySelector('.mobile-nav .logo .c');
-	const body = document.querySelector('body');
-	const links = document.querySelector('.mobile-nav__links');
-	const link = Array.from(document.querySelectorAll('.mobile-nav__links li'));
-
-	menu.classList.toggle('active');
-
-	if (menu.classList.contains('active') === true) {
-		logo.style.fill = 'var(--light)';
-		body.style.overflowY = 'hidden';
-		links.style.opacity = '1';
-		links.style.transform = 'scale(1)';
-		setTimeout(function() {
-			link.forEach(item => {
-				item.style.opacity = '1';
-			});
-		}, 290);
-	} else {
-		closeTab();
-	}
-	function closeTab() {
-		link.forEach(item => {
-			item.style.opacity = '0';
+	body.style.backgroundColor = styles.body;
+	if (document.documentElement.offsetWidth > 900) {
+		logoInner.style.fill = styles.logoInner;
+		logoOuter.style.stroke = styles.logoOuter;
+		links.forEach(link => {
+			link.style.color = styles.link;
 		});
-		setTimeout(function() {
-			logo.style.fill = 'var(--cta)';
-			body.style.overflowY = 'visible';
-			links.style.opacity = '0';
-			links.style.transform = 'scale(1, 0)';
-		}, 290);
 	}
-	links.addEventListener('click', () => {
-		if (menu.classList.contains('active')) {
-			menu.classList.remove('active');
-			closeTab();
-		}
-	});
-});
+}
 
-const aboutTriDesk = document.querySelector('.about--desktop');
-const aboutTriMob = document.querySelector('.about--mobile');
+window.addEventListener('scroll', debounce(whichScroll));
+function whichScroll() {
+	console.count('this');
+	!document.querySelector('.case__html .main-wrapper')
+		? handleScroll()
+		: handleBookopusScroll();
+}
 
-aboutTriDesk.addEventListener('click', openAbout);
-aboutTriMob.addEventListener('click', () => {
-	openAbout();
-	// bodyOverflow();
-});
+// Get both desktop and mobile nav about triggers and bind them a click event.
+const aboutSec = document.querySelectorAll('.about--desktop, .about--mobile');
+aboutSec.forEach(sec => sec.addEventListener('click', openAbout));
+let trigger;
 
 function openAbout() {
-	const body = document.querySelector('body');
-	const logo = document.querySelector('.logo svg .c');
+	trigger = this;
 	const about = document.querySelector('.about');
+	// Declare close element and bind the closing function to it.
 	const close = document.querySelector('.about__close');
+	close.addEventListener('click', closeAbout);
+	// when the click fires, add about section an active class, which then will animate itself in.
 	about.classList.add('about--active');
-
-	if (about.classList.contains('about--active') === true) {
-		aboutTriDesk.classList.add('highlight');
-		logo.style.fill = 'var(--light)';
+	// and add some style to other elements on the page.
+	if (about.classList.contains('about--active')) {
+		this.classList.add('highlight'); // add highlighter to the link.
+		logoInner.style.fill = 'var(--light)';
 		body.style.overflow = 'hidden';
 	} else {
-		logo.style.fill = 'var(--cta)';
-		aboutTriDesk.classList.remove('highlight');
+		closeAbout();
+	}
+	// Remove all styling and close about section.
+	function closeAbout() {
+		about.classList.remove('about--active');
+		logoInner.style.fill = 'var(--cta)';
+		trigger.classList.remove('highlight');
 		body.style.overflow = 'visible';
 	}
-	close.addEventListener('click', () => {
-		about.classList.remove('about--active');
-		logo.style.fill = 'var(--cta)';
-		aboutTriDesk.classList.remove('highlight');
-		body.style.overflow = 'visible';
-	});
 }
-// function bodyOverflow() {
-// 	const body = document.querySelector("body");
-// 	const about = document.querySelector(".about");
-// 	const close = document.querySelector(".about__close");
 
-// 	if (about.classList.contains("about--active") === true) {
-// 		body.style.overflowX = "hidden";
-// 	} else {
-// 		body.style.overflowX = "visible";
-// 	}
-// 	close.addEventListener("click", () => {
-// 		body.style.overflowX = "visible";
-// 	});
-// }
+// declare mobile menu element and bind a click event to it.
+const menu = document.querySelector('.mobile-nav--menu');
+menu.addEventListener('click', handleMenu);
 
-const bookopusWorks = document.querySelector('.bookopus');
+function handleMenu() {
+	const logo = document.querySelector('.mobile-nav .logo .c'); // the logo inside of the mobile navigation.
+	const mainLinks = document.querySelector('.mobile-nav__links');
+	const links = Array.from(
+		document.querySelectorAll('.mobile-nav__links > li')
+	);
 
-bookopusWorks.addEventListener('click', fetchBookopusStudy);
+	menu.classList.toggle('active');
+	// if the nav is activated...
+	if (menu.classList.contains('active')) {
+		// ...change styles...
+		logo.style.fill = 'var(--light)';
+		body.style.overflowY = 'hidden';
+		// ...check the transition end...
+		menu.addEventListener('transitionend', addStyles);
 
-function fetchBookopusStudy() {
-	const cardImg = document.querySelector('.cardimg--bookopus');
-	const worksArticle = document.querySelector('.works__article');
-
-	const caseHtml = document.querySelector('.case__html');
-	const caseBg = document.querySelector('.case__bg');
-
-	const index = document.querySelector('#index');
-
-	fetch('bookopus.html')
-		.then(res => res.text())
-		.then(data => {
-			caseHtml.innerHTML = data;
-		});
-
-	// cardImg.style.animation = "slideLeft 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
-	// worksArticle.style.animation = "slideRight 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
-
-	cardImg.style.opacity = '0';
-	worksArticle.style.opacity = '0';
-
-	caseBg.style.opacity = '1';
-	caseBg.style.visibility = 'visible';
-
-	setTimeout(() => {
-		menu.style.display = 'none';
-		caseHtml.style.opacity = '1';
-		caseHtml.style.visibility = 'visible';
-		index.style.visibility = 'hidden';
-
-		logoInner.style.fill = 'var(--cta)';
-
-		window.scrollTo(0, 0);
-
-		function handleCaseScroll() {
-			if (document.querySelector('.case__html .main-wrapper')) {
-				const mockup = document.querySelector('.case__mockup');
-				const mockupImg = document.querySelector('.case__mockup img');
-				const bottomMock = document.querySelector('.case__bottom');
-				const bottomMockImg = Array.from(
-					document.querySelectorAll('.case__bottom img')
-				);
-
-				const mockupOffset = mockup.getBoundingClientRect().top;
-				const bottomOffset = bottomMock.getBoundingClientRect().top;
-
-				const userFlow = Array.from(
-					document.querySelectorAll('#userflow .st0')
-				);
-
-				if (mockupOffset < 450) {
-					mockupImg.classList.add('animate');
-				}
-				// if (mockupOffset < -430){
-				//     for (const st0 in userFlow){
-				//         userFlow[st0].classList.add('animate')
-				//     }
-				// }
-				if (bottomOffset < 400) {
-					for (const img in bottomMockImg) {
-						bottomMockImg[img].classList.add('animate');
-					}
-				}
+		function addStyles(e) {
+			// ...if the ended transition is transform, change styles...
+			if (e.propertyName === 'transform') {
+				mainLinks.style.transform = 'scale(1)';
+				// ...and reveal links one by one, in order.
+				links.forEach((link, i) => {
+					setTimeout(() => {
+						link.style.opacity = '1';
+					}, 100 * (i + 1));
+				});
+				// also remove the listener for menu.
+				menu.removeEventListener('transitionend', addStyles, false);
 			}
 		}
+	} else {
+		closeMenu();
+	}
 
-		window.addEventListener('scroll', debounce(handleCaseScroll));
+	function closeMenu() {
+		const reverseLinks = links.reverse();
+		reverseLinks.forEach((link, i) => {
+			links.forEach((link, i) => {
+				setTimeout(() => {
+					link.style.opacity = '0';
+				}, 100 * (i + 1));
+			});
+			link.addEventListener('click', () => {
+				if (menu.classList.contains('active')) {
+					menu.classList.remove('active');
+					closeMenu();
+				}
+			});
+			link.addEventListener('transitionend', removeStyles);
+		});
 
-		const mobileNav = document.querySelector('.mobile-nav');
-		const caseClose = document.querySelector('.case__close');
-
-		caseClose.addEventListener('click', closeCase);
-		mobileNav.addEventListener('click', closeCase);
-
-		function closeCase() {
-			caseHtml.style.opacity = '0';
-			caseHtml.style.visibility = 'hidden';
-			index.style.visibility = 'visible';
-			menu.style.display = 'block';
-
-			setTimeout(() => {
-				window.scrollTo(0, worksTop);
-				// cardImg.style.animation = "slideLeftBack 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
-				// worksArticle.style.animation = "slideRightBack 1.5s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1";
-
-				cardImg.style.opacity = '1';
-				worksArticle.style.opacity = '1';
-
-				caseBg.style.opacity = '0';
-				caseBg.style.visibility = 'hidden';
-			}, 100);
-			caseHtml.innerHTML = ' ';
+		function removeStyles(e) {
+			if (e.propertyName === 'opacity') {
+				logo.style.fill = 'var(--cta)';
+				body.style.overflowY = 'visible';
+				mainLinks.style.transform = 'scale(1, 0)';
+				reverseLinks.forEach(link =>
+					link.removeEventListener('transitionend', removeStyles)
+				);
+			}
 		}
-	}, 1500);
+	}
 }
+// declare sections here to fetch.
+// ! this requires a data-fetch on the html element, otherwise a "coming soon" statement will be shown.
+// ! more on this below comments.
+const bookopus = document.querySelector('.bookopus');
+const rennie = document.querySelector('.rennie');
+bookopus.addEventListener('click', function() {
+	getPage(this.dataset.fetch, this);
+});
+rennie.addEventListener('click', function() {
+	getPage(this.dataset.fetch, this);
+});
+// check if the page has an existing content...
+function getPage(page, el) {
+	if (page === undefined) {
+		handleComing();
+		return;
+	}
+	fetch(page)
+		.then(res => res.text())
+		.then(data => displayFetch(el, data)); // give clicked element and the data from the server to display.
+}
+// if it does give the data to the function below for display.
+function displayFetch(el, data) {
+	const cardImg = el.querySelector('.cardimg--bookopus');
+	const worksArticle = el.querySelector('.works__article');
+	const index = document.querySelector('#index');
+
+	const caseLand = document.querySelector('#case-content');
+	const caseHtml = caseLand.querySelector('.case__html');
+
+	caseHtml.innerHTML = data;
+	el.classList.add('case--active');
+	caseLand.classList.add('case--active');
+	menu.style.display = 'none';
+	index.style.visibility = 'hidden';
+	logoInner.style.fill = 'var(--cta)';
+	window.scrollTo(0, 0);
+
+	const closeBtn = document.querySelector('.case__close');
+	closeBtn.addEventListener('click', caseClose);
+
+	function caseClose() {
+		caseHtml.innerHTML = '';
+		el.classList.remove('case--active');
+		caseLand.classList.remove('case--active');
+		menu.style.display = 'block';
+		index.style.visibility = 'visible';
+		handleScroll();
+		window.scrollTo(0, bookopus.offsetTop);
+	}
+}
+// otherwise...
+function handleComing() {
+	// a "coming soon" caption will animate in and when the animation is done,
+	// it will remove both animation class and the event listener from the coming soon element.
+	const coming = rennie.querySelector('.coming-soon');
+	coming.classList.add('animate');
+	coming.addEventListener('animationend', clearAnimation);
+	function clearAnimation() {
+		coming.classList.remove('animate');
+		coming.removeEventListener('animationend', clearAnimation);
+	}
+}
+function handleBookopusScroll() {
+	const mockup = document.querySelector('.case__mockup');
+	const mockupImg = document.querySelector('.case__mockup img');
+	const bottomMock = document.querySelector('.case__bottom');
+	const bottomMockImg = Array.from(
+		document.querySelectorAll('.case__bottom img')
+	);
+
+	const mockupOffset = mockup.getBoundingClientRect().top;
+	const bottomOffset = bottomMock.getBoundingClientRect().top;
+
+	if (mockupOffset < 450) {
+		mockupImg.classList.add('animate');
+	}
+
+	if (bottomOffset < 400) {
+		for (const img in bottomMockImg) {
+			bottomMockImg[img].classList.add('animate');
+		}
+	}
+}
+window.addEventListener('scroll', () => {});
