@@ -27,14 +27,23 @@ function handleScroll() {
 	});
 	// Depending on the section you are on, the below code are going to set,
 	// bodyStyles object and we'll run a function to set styles real-time.
+	bodyStyles = {
+		body: 'var(--light)',
+		logoInner: 'var(--cta)',
+		logoOuter: 'var(--dark)',
+		link: 'var(--dark)'
+	};
+	handleScrollStyles(bodyStyles);
 	if (window.scrollY >= 250) {
 		const cardItem = document.querySelectorAll('.cardimg__item');
 		cardItem.forEach(item => {
 			item.classList.add('cardimg--reveal');
 		});
+	}
+	if (window.scrollY >= sections.sleepy) {
 		bodyStyles = {
-			body: 'var(--light)',
-			logoInner: 'var(--cta)',
+			body: '#7F7CBE',
+			logoInner: 'var(--light)',
 			logoOuter: 'var(--dark)',
 			link: 'var(--dark)'
 		};
@@ -89,7 +98,6 @@ function handleScrollStyles(styles) {
 
 window.addEventListener('scroll', debounce(whichScroll));
 function whichScroll() {
-	console.count('this');
 	!document.querySelector('.case__html .main-wrapper')
 		? handleScroll()
 		: handleBookopusScroll();

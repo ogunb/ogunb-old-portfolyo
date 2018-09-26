@@ -17,14 +17,14 @@
         z-index: 500
         color: var(--darker)
         &.animate
-            animation: comingSoon 3s cubic-bezier(0.69, 0.02, 0.29, 1.16) forwards 1
+            animation: comingSoon 3s cubic-bezier(.6,.05,0,.99) forwards 1
     .bookopus, .rennie
         padding: 0 5%
         @media screen and (max-width: 750px)
             padding: 0
             justify-content: space-between
     &__article
-        transition: all 1s cubic-bezier(0.69, 0.02, 0.29, 1.16)
+        transition: all 1s cubic-bezier(.6,.05,0,.99)
         *
             margin: 0
         @media screen and (max-width: 900px)
@@ -36,11 +36,14 @@
     &__title
         margin-bottom: 1rem
 
-    .rennie
+    .bookopus
         .works__article, h2
             text-align: right
+        .works__name::before
+            left: auto
+            right: -20%
+    .rennie, .sleepy
+        .works__article, h2
             color: var(--light)
         .works__name::before
             background: var(--light)
-            left: auto
-            right: -20%
