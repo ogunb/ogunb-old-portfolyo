@@ -236,12 +236,14 @@ function displayFetch(el, data) {
 	menu.style.display = 'none';
 	index.style.visibility = 'hidden';
 	logoInner.style.fill = 'var(--cta)';
+	document.querySelector('.mobile-nav').style.width = '50%';
 	window.scrollTo(0, 0);
 
 	const closeBtn = document.querySelector('.case__close');
 	closeBtn.addEventListener('click', caseClose);
 
 	function caseClose() {
+		document.querySelector('.mobile-nav').style.width = '100%';
 		caseHtml.innerHTML = '';
 		el.classList.remove('case--active');
 		caseLand.classList.remove('case--active');
