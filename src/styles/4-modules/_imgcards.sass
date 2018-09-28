@@ -1,8 +1,3 @@
-.cardimg--reverse
-    &::before
-        top: 65%!important
-        left: auto!important
-        right: -20rem!important
 .cardimg
     width: 492px
     height: 492px
@@ -11,6 +6,9 @@
     cursor: alias
     margin: 0
     position: relative
+    display: flex
+    justify-content: center
+    align-items: center
     &--hero
         width: 30vw!important
         height: 30vw!important
@@ -38,9 +36,6 @@
             animation: glitch .3s infinite cubic-bezier(.6,.05,0,.99)
         @media screen and (max-width: 550px)
             display: none
-    &--rennie, &--bookopus, &--sleepy
-        transition: all 1.5s cubic-bezier(.6,.05,0,.99)
-        position: relative
     &::before
         content: ''
         display: inline-block
@@ -51,54 +46,75 @@
         top: 65%
         left: -20rem
         z-index: -1
-        @media screen and (max-width: 900px)
-            left: -55%
-        @media screen and (max-width: 600px)
+        @media screen and (max-width: 750px)
             display: none
+    &--rennie, &--bookopus, &--sleepy
+        transition: all 1.5s cubic-bezier(.6,.05,0,.99)
+        position: relative
     &--bookopus
         background: url('../images/bookopus-thumb-bg.jpg')
     &--rennie
         background: url('../images/rennie-thumb-bg.jpg')
     &--sleepy
         background: url('../images/sleepy-thumb-bg.jpg')
+    &--reverse
+        .cardimg__container
+            padding-left: 5%
+        .cardimg__item
+            right: 10%
+            @media screen and (max-width: 425px)
+                right: 5%
+        .cardimg__back
+            @media screen and (max-width: 425px)
+                right: 15%
+            @media screen and (max-width: 350px)
+                right: 10%
+        @media screen and (max-width: 750px)
+            margin-left: -40vw
+        @media screen and (max-width: 575px)
+            margin-left: -60vw
+        @media screen and (max-width: 500px)
+            margin-left: -80vw
+        @media screen and (max-width: 350px)
+            margin-left: -100vw
+        &::before
+            top: 65%!important
+            left: auto!important
+            right: -20rem!important
+    &__container
+        width: 100%
+        height: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+        padding-right: 5%
+        padding-top: 5%
+        @media screen and (max-width: 400px)
+            padding-right: 25%
+        @media screen and (max-width: 350px)
+            padding-right: 35%
     &__item
         position: absolute
         box-shadow: 0 .3rem 2rem rgba(0,0,0,.20)
         width: 300px
         height: 184px
         z-index: 5
-        top: calc(58% - (184px/2))
-        left: calc(58% - (300px/2))
         opacity: 0
         transition: all 600ms cubic-bezier(.6,.05,0,.99)
         transition-delay: 100ms
-    .bookopus &__item
-        left: auto
-        right: calc(58% - (300px/2))
     &__back
+        margin-top: -5%
+        right: 15%
         z-index: 1
         height: 204px
-        top: 28%
-        left: 18%
         transform: translateY(5rem)
         transition: all 600ms cubic-bezier(.6,.05,0,.99)
         transition-delay: 0
-    .bookopus &__back
-        left: auto
-        right: 18%
+        @media screen and (max-width: 400px)
+            right: 25%
+        @media screen and (max-width: 350px)
+            right: 30%
     &--reveal
         transform: translateY(0)
         opacity: 1
-    @media screen and (max-width: 800px)
-        width: 49.2rem
-        height: 49.2rem
-        &__item
-            width: calc(30rem / 1.5)
-            height: calc(18.4rem / 1.5)
-    @media screen and (max-width: 650px)
-        &__back
-            height: calc(20.4rem / 1.5)
-            left: -38vw
-        .bookopus &__back
-            left: auto
-            right: -18vw
+    
