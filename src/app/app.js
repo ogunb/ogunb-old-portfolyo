@@ -162,33 +162,35 @@ function handleMenu() {
 					setTimeout(() => {
 						link.style.opacity = '1';
 					}, 100 * (i + 1));
+					// Also add click listener to close the menu if one of the links are clicked.
+					link.addEventListener('click', () => {
+						menu.classList.remove('active');
+						closeMenu();
+					});
 				});
 				// also remove the listener for menu.
 				menu.removeEventListener('transitionend', addStyles, false);
 			}
 		}
 	} else {
+		// if the active class is removed run closeMenu
 		closeMenu();
 	}
 
 	function closeMenu() {
+		// reverse the array order of links for animation.
 		const reverseLinks = links.reverse();
 		reverseLinks.forEach((link, i) => {
 			links.forEach((link, i) => {
 				setTimeout(() => {
-					link.style.opacity = '0';
+					link.style.opacity = '0'; //animate links one by one, bottom to top.
 				}, 100 * (i + 1));
 			});
-			link.addEventListener('click', () => {
-				if (menu.classList.contains('active')) {
-					menu.classList.remove('active');
-					closeMenu();
-				}
-			});
-			link.addEventListener('transitionend', removeStyles);
+			link.addEventListener('transitionend', removeStyles); // listen for transition end...
 		});
 
 		function removeStyles(e) {
+			// ... if the transition that ended is opacitiy, clear all styles to default.
 			if (e.propertyName === 'opacity') {
 				logo.style.fill = 'var(--cta)';
 				body.style.overflowY = 'visible';
