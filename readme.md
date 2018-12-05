@@ -1,3 +1,3 @@
-# This is the source files for my personal website.
+# This is the source files for my old personal site.
 
-I had fun building it and now you can have it, modify it, share it; use it however you like.
+I had fun building this for myself. It was supposed to be a designer portfolio. Deprecated now.
